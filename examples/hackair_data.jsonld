@@ -1,0 +1,11 @@
+{ 
+  "@context": 
+    {  "hackair_data": "http://www.opengis.net/defs/appschema/citsci/hackair_data/" ,
+      "measurements": "hackair_data:measurements" ,
+      "pollutant_q": "hackair_data:pollutant_q" ,
+      "pollutant_i": "hackair_data:pollutant_i" ,
+      "name": "hackair_data:variable_name",
+      "value": "hackair_data:variable_value",
+      "units": "hackair_data:variable_units"
+      }
+}
