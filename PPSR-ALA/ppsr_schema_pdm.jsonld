@@ -1,0 +1,36 @@
+{
+	"@context": "../utilities/json-schema-rdf-ldcontext.json",
+	"$schema": "http://json-schema.org/schema#",
+	"$id": "https://github.com/CitSciAssoc/DMWG-PPSR-Core-PDM.json",
+
+	"name": "programOrCampaign",
+	"description": "An overarching context for a set of related projects. Projects may be related in the context of a common funding source, a common thematic or conceptual framework, or other such context. Note that projects do not need to be created in the context of a programOrCampaign, but that a programOrCampaign can be a container for 1:many projects. Entity equates to OWL 2.0 Class object.",
+	"required": false,
+	"allowMultiple": true,
+	"type": "entity",
+	"owl2ObjectType": "class",
+	"property": [{
+			"name": "programId",
+			"description": "The identifier of the initiative (e.g., overarching research program or funding initiative) encompassing the project",
+			"required": true,
+			"allowMultiple": false,
+			"owl2ObjectType": "property",
+			"dataType": "text"
+		}, {
+			"name": "programName",
+			"description": "The initiative (e.g., overarching research program) encompassing the project (e.g., Horizon 2020)",
+			"required": true,
+			"allowMultiple": false,
+			"owl2ObjectType": "property",
+			"dataType": "text"
+		}, {
+			"name": "programDescription",
+			"description": "General description/summary  of the Research Program or funding initiative.",
+			"required": false,
+			"allowMultiple": false,
+			"owl2ObjectType": "property",
+			"dataType": "text"
+		}
+	]
+
+}

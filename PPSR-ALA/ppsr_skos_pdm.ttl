@@ -1,0 +1,44 @@
+# baseURI: http://defs-dev.opengis.net/def/appschema/cs-ppsr/pdm>
+
+# imports: http://purl.org/dc/elements/1.1/
+
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix policy: <http://www.opengis.net/def/metamodel/ogc-na/> .
+@prefix status: <http://www.opengis.net/def/status/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix ppsr-pdm: <http://defs-dev.opengis.net/def/appschema/cs-ppsr/pdm/> .
+
+<http://defs-dev.opengis.net/def/appschema/cs-ppsr/pdm> a skos:ConceptScheme ;
+rdfs:label "PPSR Project Data Model";
+ rdfs:comment "An overarching context for a set of related projects. Projects may be related in the context of a common funding source, a common thematic or conceptual framework, or other such context. Note that projects do not need to be created in the context of a programOrCampaign, but that a programOrCampaign can be a container for 1:many projects."@en ;
+ policy:status status:experimental
+.
+
+ppsr-pdm:programId a skos:Concept ;
+  skos:defintion "The identifier of the initiative (e.g., overarching research program or funding initiative) encompassing the project"@en ;
+  rdfs:label "Program ID" ;
+  rdfs:range xsd:string;
+  owl:minCardinality 1;
+   owl:maxCardinality 1;
+.
+
+ppsr-pdm:programName a skos:Concept ;
+  skos:defintion "The initiative (e.g., overarching research program) encompassing the project (e.g., Horizon 2020)"@en ;
+  rdfs:label "Program Name" ;
+  rdfs:range xsd:string;
+  owl:minCardinality 1;
+    owl:maxCardinality 1;
+.
+
+ppsr-pdm:programDescription a skos:Concept ;
+  skos:defintion "General description/summary  of the Research Program or funding initiative."@en ;
+  rdfs:label "Program Description" ;
+  rdfs:range xsd:string;
+  owl:maxCardinality 1;
+.

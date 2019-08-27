@@ -1,0 +1,2335 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$id": "https://github.com/CitSciAssoc/DMWG-PPSR-Core.json",
+  "contains": [
+    {
+      "name": "programOrCampaign",
+      "description": "An overarching context for a set of related projects. Projects may be related in the context of a common funding source, a common thematic or conceptual framework, or other such context. Note that projects do not need to be created in the context of a programOrCampaign, but that a programOrCampaign can be a container for 1:many projects. Entity equates to OWL 2.0 Class object.",
+      "required": false,
+      "allowMultiple": true,
+      "type": "entity",
+      "owl2ObjectType": "class",
+      "property": [
+        {
+          "name": "programId",
+          "description": "The identifier of the initiative (e.g., overarching research program or funding initiative) encompassing the project",
+          "required": true,
+          "allowMultiple": false,
+          "owl2ObjectType": "property",
+          "dataType": "text"
+        },
+        {
+          "name": "programName",
+          "description": "The initiative (e.g., overarching research program) encompassing the project (e.g., Horizon 2020)",
+          "required": true,
+          "allowMultiple": false,
+          "owl2ObjectType": "property",
+          "dataType": "text"
+        },
+        {
+          "name": "programDescription",
+          "description": "General description/summary  of the Research Program or funding initiative.",
+          "required": false,
+          "allowMultiple": false,
+          "owl2ObjectType": "property",
+          "dataType": "text"
+        }
+      ],
+      "contains": [
+        {
+          "name": "project",
+          "type": "entity",
+          "owl2ObjectType": "class",
+          "required": true,
+          "allowMultiple": true,
+          "description": "A project is an overarching context for a set of associated activities which contribute to a specific objective. Entity equates to OWL 2.0 Class object.",
+          "contains": [
+            {
+              "name": "pmmCoreTerms",
+              "type": "propertyList",
+              "property": [
+                {
+                  "name": "projectId",
+                  "description": "Globally unique identifier(GUID)for the project. System generated.",
+                  "required": true,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "allowMultiple": false,
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "Dublin Core ontology",
+                      "namespace": "http://purl.org/dc/terms/",
+                      "property": "dcterms:identifier"
+                    },
+                    {
+                      "nameOfStandard": "Core Ontology of Scientific Investigation",
+                      "namespace": "http://purl.org/net/cosi#",
+                      "property": "cosi:hasIdentifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "projectExternalId",
+                  "description": "The identifier of the project in an external database or repository.",
+                  "required": false,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "allowMultiple": false
+                },
+                {
+                  "name": "projectOriginalRepository",
+                  "description": "The name of the project database in which a project was first registered or published. Allows traceability of a project in multiple databases to it's original registration repository.",
+                  "required": true,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "allowMultiple": true,
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "Dublin Core ontology",
+                      "namespace": "http://purl.org/dc/terms/",
+                      "property": "dcterms:publisher"
+                    },
+                    {
+                      "nameOfStandard": "PROV-DC",
+                      "namespace": "http://www.w3.org/ns/prov#",
+                      "property": "prov:wasAttributedTo"
+                    }
+                  ]
+                },
+                {
+                  "name": "projectDateCreated",
+                  "description": "The date and time that the record was created in the database. Uses the ISO 8601:2004 (E) dateTime standard",
+                  "required": true,
+                  "owl2ObjectType": "property",
+                  "dataType": "date",
+                  "allowMultiple": false,
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "Dublin Core ontology",
+                      "namespace": "http://purl.org/dc/terms/",
+                      "property": "dcterms:created"
+                    },
+                    {
+                      "nameOfStandard": "PROV-DC",
+                      "namespace": "http://www.w3.org/ns/prov#",
+                      "property": "prov:generatedAtTime"
+                    }
+                  ]
+                },
+                {
+                  "name": "projectLastUpdatedDate",
+                  "description": "The date and time that the record was last updated in the database. Uses the ISO 8601:2004 (E) dateTime standard",
+                  "required": true,
+                  "owl2ObjectType": "property",
+                  "dataType": "date",
+                  "allowMultiple": false,
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "Dublin Core ontology",
+                      "namespace": "http://purl.org/dc/terms/",
+                      "property": "dcterms:modified"
+                    },
+                    {
+                      "nameOfStandard": "PROV-DC",
+                      "namespace": "http://www.w3.org/ns/prov#",
+                      "property": "prov:generatedAtTime"
+                    }
+                  ]
+                },
+                {
+                  "name": "projectName",
+                  "description": "Short name or title of the project.",
+                  "required": true,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "allowMultiple": false,
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "Dublin Core ontology",
+                      "namespace": "http://purl.org/dc/terms/",
+                      "property": "dcterms:title"
+                    },
+                    {
+                      "nameOfStandard": "Core Ontology of Scientific Investigation",
+                      "namespace": "http://purl.org/net/cosi#",
+                      "property": "cosi:hasTitle"
+                    }
+                  ]
+                },
+                {
+                  "name": "projectAim",
+                  "description": "The primary aim, goal or objective of the project.",
+                  "required": true,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "allowMultiple": false,
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "Dublin Core ontology",
+                      "namespace": "http://purl.org/dc/terms/",
+                      "property": "dcterms:abstract"
+                    }
+                  ]
+                },
+                {
+                  "name": "projectDescription",
+                  "description": "Abstract or long description of the project.",
+                  "required": true,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "allowMultiple": false,
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "Dublin Core ontology",
+                      "namespace": "http://purl.org/dc/terms/",
+                      "property": "dcterms:description"
+                    },
+                    {
+                      "nameOfStandard": "Core Ontology of Scientific Investigation",
+                      "namespace": "http://purl.org/net/cosi#",
+                      "property": "cosi:hasDescription"
+                    }
+                  ]
+                },
+                {
+                  "name": "hasTag",
+                  "description": "List of tags to assist with searching and filtering.",
+                  "required": false,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "allowMultiple": true,
+                  "vocabulary": [
+                    "Fees applicable",
+                    "Suitable for children",
+                    "Teaching materials available",
+                    "Do-it-yourself",
+                    "Participate from home",
+                    ""
+                  ]
+                },
+                {
+                  "name": "difficultyLevel",
+                  "description": "Assessed class of project difficulty for untrained participants to undertake. This attribute is used to assist with searching and filtering.",
+                  "required": false,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "allowMultiple": false,
+                  "vocabulary": [
+                    "Easy",
+                    "Medium",
+                    "Hard"
+                  ]
+                },
+                {
+                  "name": "dct:keyword",
+                  "description": "Keywords (comma separated) which are indexed and aid in searching for and finding projects.",
+                  "required": false,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "allowMultiple": true,
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "Data Catalogue Vocabulary (DCAT)",
+                      "namespace": "http://www.w3.org/ns/dcat#",
+                      "property": "dct:keyword"
+                    }
+                  ]
+                },
+                {
+                  "name": "projectStatus",
+                  "description": "The activity status of the project.",
+                  "required": true,
+                  "allowMultiple": false,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "vocabulary": [
+                    "Not yet started",
+                    "Active",
+                    "Periodically active",
+                    "On hold",
+                    "Completed",
+                    "Abandoned"
+                  ],
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "Core Ontology of Scientific Investigation",
+                      "namespace": "http://purl.org/net/cosi#",
+                      "property": "cosi:hasStatus"
+                    }
+                  ]
+                },
+                {
+                  "name": "projectStartDate",
+                  "description": "The actual date that the project began. Uses the ISO 8601:2004 (E) dateTime standard",
+                  "required": true,
+                  "owl2ObjectType": "property",
+                  "dataType": "date",
+                  "allowMultiple": false,
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "",
+                      "namespace": "",
+                      "property": ""
+                    }
+                  ]
+                },
+                {
+                  "name": "projectEndDate",
+                  "description": "The actual date that the project ended. Uses the ISO 8601:2004 (E) dateTime standard",
+                  "required": false,
+                  "owl2ObjectType": "property",
+                  "dataType": "date",
+                  "allowMultiple": false,
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "",
+                      "namespace": "",
+                      "property": ""
+                    }
+                  ]
+                },
+                {
+                  "name": "projectDuration",
+                  "description": "The duration or elapsed time over which a project was undertaken. This would typically be derived as the difference in a unit of time between the start and end dates of a project, but may be infinite (if no end date applies) or explicit (if duration is given with no end date specified.",
+                  "required": true,
+                  "owl2ObjectType": "property",
+                  "dataType": "date",
+                  "allowMultiple": false,
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "",
+                      "namespace": "",
+                      "property": ""
+                    }
+                  ]
+                },
+                {
+                  "name": "cosi:belongsToProgramme",
+                  "description": "Name of the Programme that the project is associated with.",
+                  "required": false,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "allowMultiple": false,
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "Core Ontology of Scientific Investigation",
+                      "namespace": "http://purl.org/net/cosi#",
+                      "property": "cosi:belongsToProgramme"
+                    }
+                  ]
+                },
+                {
+                  "name": "projectScienceType",
+                  "description": "The category of science represented by the project. Where the project fits into the landscape of science.",
+                  "required": true,
+                  "allowMultiple": true,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "vocabulary": [
+                    "Acoustics",
+                    "Agriculture & Vetinary science",
+                    "Animals",
+                    "Archeology & culture",
+                    "Astronomy & space",
+                    "Biodiversity",
+                    "Biogeography",
+                    "Biology",
+                    "Birds",
+                    "Chemical sciences",
+                    "Climate & water",
+                    "Ecology & environment",
+                    "Education",
+                    "Food science",
+                    "Genetics",
+                    "Geography",
+                    "Geology & earth science",
+                    "Health & medicine",
+                    "Indigenous culture",
+                    "Information & Computing sciences",
+                    "Insects & pollinators",
+                    "Long-term species monitoring",
+                    "Natural resource management",
+                    "Physics",
+                    "Psychology",
+                    "Science policy",
+                    "Social sciences",
+                    ""
+                  ],
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "Core Ontology of Scientific Investigation",
+                      "namespace": "http://purl.org/net/cosi#",
+                      "property": "cosi:hasFieldOfStudy"
+                    }
+                  ]
+                },
+                {
+                  "name": "projectIntendedOutcomes",
+                  "description": "Project outcomes",
+                  "required": false,
+                  "allowMultiple": true,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "vocabulary": [
+                    "Civic and community benefit",
+                    "Conservation",
+                    "Individual learning",
+                    "Programmatic",
+                    "Research advancement"
+                  ],
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "Project Ontology",
+                      "namespace": "proj",
+                      "property": "proj:objective"
+                    },
+                    {
+                      "nameOfStandard": "Core Ontology of Scientific Investigation",
+                      "namespace": "http://purl.org/net/cosi#",
+                      "property": "cosi:hasOutput"
+                    }
+                  ]
+                },
+                {
+                  "name": "projectImage",
+                  "description": "Image(s) representing the project",
+                  "required": false,
+                  "allowMultiple": true,
+                  "owl2ObjectType": "class",
+                  "type": "entity",
+                  "property": [
+                    {
+                      "name": "projectLogoImage",
+                      "description": "Logo image representing the project",
+                      "required": false,
+                      "allowMultiple": false,
+                      "owl2ObjectType": "property",
+                      "dataType": "image",
+                      "attribution": {
+                        "name": "projectLogoImageCredit",
+                        "description": "Attribution credit for the image",
+                        "required": false,
+                        "allowMultiple": false,
+                        "type": "text"
+                      },
+                      "synonymTerms": [
+                        {
+                          "nameOfStandard": "Friend of a friend",
+                          "namespace": "http://xmlns.com/foaf/0.1/",
+                          "property": "foaf:img"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "projectBannerImage",
+                      "description": "Banner image to representing the project",
+                      "required": false,
+                      "allowMultiple": false,
+                      "type": "image",
+                      "attribution": {
+                        "name": "projectBannerImageCredit",
+                        "description": "Attribution credit for the image",
+                        "required": false,
+                        "allowMultiple": false,
+                        "owl2ObjectType": "property",
+                        "dataType": "text"
+                      },
+                      "synonymTerms": [
+                        {
+                          "nameOfStandard": "Friend of a friend",
+                          "namespace": "http://xmlns.com/foaf/0.1/",
+                          "property": "foaf:img"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "projectUrl",
+                  "description": "An HTTP URL to an external web site for the project.",
+                  "required": false,
+                  "allowMultiple": false,
+                  "owl2ObjectType": "property",
+                  "dataType": "uri"
+                },
+                {
+                  "name": "projectGeographicLocation",
+                  "description": "User-defined geospatial representation point location(s) of the project. Point locations are typically represented as map pins. Uses OGC GeoAPI (09-083r3) standard.",
+                  "required": true,
+                  "allowMultiple": true,
+                  "owl2ObjectType": "class",
+                  "type": "geoObject",
+                  "formatOptions": [
+                    "GeoJSON",
+                    "WKT",
+                    "SHP"
+                  ],
+                  "centroidCoordinates": [
+                    {
+                      "property": [
+                        {
+                          "name": "projectPinLatitude",
+                          "description": "Latitude coordinate of the center of the project area. Typically this is where the project is hosted, e.g., a home institution. Uses OGC GeoAPI (09-083r3) standard.",
+                          "required": true,
+                          "allowMultiple": false,
+                          "owl2ObjectType": "property",
+                          "dataType": "number",
+                          "validate": "min[-90],max[90]",
+                          "formatOptions": [
+                            "GeoJSON",
+                            "WKT",
+                            "SHP"
+                          ]
+                        },
+                        {
+                          "name": "projectPinLongitude",
+                          "description": "Longitude  coordinate of the center of the project area. Typically this is where the project is hosted, e.g., a home institution. Uses OGC GeoAPI (09-083r3) standard.",
+                          "required": true,
+                          "allowMultiple": false,
+                          "owl2ObjectType": "property",
+                          "dataType": "number",
+                          "validate": "min[-180],max[180]",
+                          "formatOptions": [
+                            "GeoJSON",
+                            "WKT",
+                            "SHP"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "projectGeographicCoverage",
+                  "description": "User-defined geospatial representation(s) of the project area footprint/extent. Coverage is typically represented in a GeoJSON object which has a centroid coordinate ('centre') and a definition of the boundary of the shape. Uses OGC GeoAPI (09-083r3) standard.",
+                  "required": false,
+                  "allowMultiple": true,
+                  "owl2ObjectType": "class",
+                  "type": "geoObject",
+                  "formatOptions": [
+                    "GeoJSON",
+                    "WKT",
+                    "SHP"
+                  ],
+                  "centroidCoordinates": [
+                    {
+                      "property": [
+                        {
+                          "name": "projectGeographicCoverageCentroidLatitude",
+                          "description": "Latitude coordinate of the centroid of the project extent area. Latitude coordinate in geographic decimal degrees for the center or home base of the project best representing the project's location as a point. Uses OGC GeoAPI (09-083r3) standard.",
+                          "required": false,
+                          "allowMultiple": false,
+                          "owl2ObjectType": "property",
+                          "dataType": "number",
+                          "formatOptions": [
+                            "GeoJSON",
+                            "WKT",
+                            "SHP"
+                          ]
+                        },
+                        {
+                          "name": "projectGeographicCoverageCentroidLongitude",
+                          "description": "Longitude coordinate of the centroid of the project extent area. Longitude coordinate in geographic decimal degrees for the center or home base of the project best representing the project's location as a point. Uses OGC GeoAPI (09-083r3) standard.",
+                          "required": false,
+                          "allowMultiple": false,
+                          "owl2ObjectType": "property",
+                          "dataType": "number",
+                          "formatOptions": [
+                            "GeoJSON",
+                            "WKT",
+                            "SHP"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "unRegions",
+                  "description": "Select list based on UN M.49 coding classification, Geographical supranational regions. Used for enabling regionalized views of projects where projects are active, to make searching for projects more regionally relevant for some users.",                 "required": false,
+                  "allowMultiple": true,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "vocabulary": [
+                    "Africa - Northern Africa (015)",
+                    "Africa - Sub-Saharan Africa (202)",
+                    "Americas – South America (005)",
+                    "Americas – North America (003)",
+                    "Asia - Central Asia 143)",
+                    "Asia - Eastern Asia (030)",
+                    "Asia - South-eastern Asia (035)",
+                    "Asia - Southern Asia (034)",
+                    "Asia - Western Asia (145)",
+                    "Europe - Eastern Europe (151)",
+                    "Europe - Northern Europe (154)",
+                    "Europe - Southern Europe (039)",
+                    "Europe - Western Europe (155)",
+                    "Oceania - Australia and New Zealand (053)",
+                    "Oceania - Melanesia (054)",
+                    "Oceania - Micronesia (057)",
+                    "Oceania - Polynesia (061)",
+                    "World (001)"
+                  ]
+                },
+                {
+                  "name": "language",
+                  "description": "The encoding language used for the project. Uses Unicode Standard UTF-8 (ISO/IEC 10646:2014 plus Amendment 1).",
+                  "required": true,
+                  "allowMultiple": false,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "Dublin Core",
+                      "namespace": "http://purl.org/dc/terms/language",
+                      "property": "language"
+                    },
+                    {
+                      "nameOfStandard": "ISO 19115",
+                      "namespace": "ISO",
+                      "property": "MD_DataIdentification.characterSet"
+                    }
+                  ]
+                },
+                {
+                  "name": "contactPoint",
+                  "description": "The principal contact point for the project.",
+                  "required": true,
+                  "allowMultiple": true,
+                  "owl2ObjectType": "class",
+                  "type": "class",
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "Data Catalog Vocabulary",
+                      "namespace": "https://www.w3.org/TR/vocab-dcat/",
+                      "property": "dcat:contactPoint"
+                    }
+                  ],
+                  "property": [
+                    {
+                      "name": "contactName",
+                      "description": "The name of the agent appointed as the contact for a project.",
+                      "required": true,
+                      "allowMultiple": true,
+                      "owl2ObjectType": "property",
+                      "dataType": "text",
+                      "synonymTerms": [
+                        {
+                          "nameOfStandard": "Friend of a Friend Vocabulary Specification",
+                          "namespace": "http://xmlns.com/foaf/spec/",
+                          "property": ""
+                        }
+                      ]
+                    },
+                    {
+                      "name": "meansOfContact",
+                      "description": "The method(s) described for making contact with the project.",
+                      "required": true,
+                      "allowMultiple": true,
+                      "owl2ObjectType": "property",
+                      "dataType": "text",
+                      "vocabulary": [
+                        "Email",
+                        "Phone",
+                        "Website",
+                        "Physical address"
+                      ],
+                      "synonymTerms": [
+                        {
+                          "nameOfStandard": "Friend of a Friend Vocabulary Specification",
+                          "namespace": "http://xmlns.com/foaf/spec/",
+                          "property": ""
+                        }
+                      ]
+                    },
+                    {
+                      "name": "contactDetails",
+                      "description": "Detailed contact information for a project.",
+                      "required": true,
+                      "allowMultiple": true,
+                      "owl2ObjectType": "property",
+                      "dataType": "text",
+                      "synonymTerms": [
+                        {
+                          "nameOfStandard": "Friend of a Friend Vocabulary Specification",
+                          "namespace": "http://xmlns.com/foaf/spec/",
+                          "property": ""
+                        }
+                      ]
+                    },
+                    {
+                      "name": "contactPointType",
+                      "description": "The type of contact point for a project.",
+                      "required": true,
+                      "allowMultiple": true,
+                      "owl2ObjectType": "property",
+                      "dataType": "text",
+                      "vocabulary": [
+                        ""
+                      ],
+                      "synonymTerms": [
+                        {
+                          "nameOfStandard": "Friend of a Friend Vocabulary Specification",
+                          "namespace": "http://xmlns.com/foaf/0.1/",
+                          "property": ""
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "projectLocality",
+                  "description": "Other textual location specification",
+                  "required": false,
+                  "allowMultiple": false,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "Darwin Core",
+                      "namespace": "http://rs.tdwg.org/dwc/terms/locality",
+                      "property": "locality"
+                    }
+                  ]
+                },
+                {
+                  "name": "projectResponsibleParty",
+                  "description": "The party responsible for the project.",
+                  "required": true,
+                  "allowMultiple": false,
+                  "owl2ObjectType": "class",
+                  "type": "entity",
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "",
+                      "namespace": "",
+                      "property": ""
+                    }
+                  ],
+                  "contains": [
+                    {
+                      "name": "projectResponsiblePartyId",
+                      "description": "The identifier of a party (eg. Organisation) that is responsible for implementing/conducting the project. This may be a foreign key to the party GUID stored in another database entity. Typically system generated.",
+                      "required": false,
+                      "allowMultiple": false,
+                      "owl2ObjectType": "property",
+                      "dataType": "text",
+                      "synonymTerms": [
+                        {
+                          "nameOfStandard": "",
+                          "namespace": "",
+                          "property": ""
+                        }
+                      ]
+                    },
+                    {
+                      "name": "projectResponsiblePartyName",
+                      "description": "Name of the primary organization responsible for hosting or implementing the project.",
+                      "required": true,
+                      "allowMultiple": false,
+                      "owl2ObjectType": "property",
+                      "dataType": "text",
+                      "synonymTerms": [
+                        {
+                          "nameOfStandard": "Friend of a friend",
+                          "namespace": "http://xmlns.com/foaf/0.1/",
+                          "property": "foaf:name"
+                        },
+                        {
+                          "nameOfStandard": "Project Ontology",
+                          "namespace": "",
+                          "property": "proj:hasLeader"
+                        },
+                        {
+                          "nameOfStandard": "",
+                          "namespace": "",
+                          "property": "prov:entity"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "pmmExtensionTerms",
+              "type": "propertyList",
+              "property": [
+                {
+                  "name": "projectAssociatedParty",
+                  "description": "A party associated with the project with a particular association role.",
+                  "required": false,
+                  "allowMultiple": true,
+                  "owl2ObjectType": "class",
+                  "type": "entity",
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "",
+                      "namespace": "",
+                      "property": ""
+                    }
+                  ],
+                  "contains": [
+                    {
+                      "name": "projectAssociatedPartyId",
+                      "description": "The id of an associated party. This may be a foreign key to the party information stored in another database entity.",
+                      "required": false,
+                      "allowMultiple": false,
+                      "owl2ObjectType": "property",
+                      "dataType": "text",
+                      "synonymTerms": [
+                        {
+                          "nameOfStandard": "friend of a Friend",
+                          "namespace": "",
+                          "property": ""
+                        }
+                      ]
+                    },
+                    {
+                      "name": "projectAssociatedPartyName",
+                      "description": "Short text name or title of a party (eg. Organisation) associated with the project and performing a role in the project.",
+                      "required": false,
+                      "allowMultiple": false,
+                      "owl2ObjectType": "property",
+                      "dataType": "text",
+                      "synonymTerms": [
+                        {
+                          "nameOfStandard": "",
+                          "namespace": "",
+                          "property": ""
+                        }
+                      ]
+                    },
+                    {
+                      "name": "projectUsFederalSponsor",
+                      "description": "Name(s) of US Federal entity(s) providing funding to the project",
+                      "required": false,
+                      "allowMultiple": false,
+                      "owl2ObjectType": "property",
+                      "dataType": "text",
+                      "vocabulary": [
+                        "Department of Interior",
+                        "Department of Commerce",
+                        "Department of Health and Human Services",
+                        "Central Intelligence Agency",
+                        "Department of Defense",
+                        "Department of Education",
+                        "Department of Energy",
+                        "Department of Homeland Security",
+                        "Department of Housing and Urban Development",
+                        "Department of Justice",
+                        "Department of State",
+                        "Department of Transportation",
+                        "Department of Veterans Affairs",
+                        "Department of Labor",
+                        "Federal Communications Commission",
+                        "General Services Administration",
+                        "Intelligence Advanced Research Projects Agency",
+                        "National Aeronautics and Space Administration",
+                        "National Archives and Records Administration",
+                        "National Endowment for the Arts",
+                        "National Science Foundation",
+                        "White House",
+                        "Office of Personnel Management",
+                        "Peace Corps",
+                        "Smithsonian Institution",
+                        "Environmental Protection Agency",
+                        "US Department of Agriculture",
+                        "Other"
+                      ],
+                      "synonymTerms": [
+                        {
+                          "nameOfStandard": "",
+                          "namespace": "",
+                          "property": ""
+                        }
+                      ]
+                    },
+                    {
+                      "name": "projectAssociatedPartyRole",
+                      "description": "A role which a party (eg. Organisation) associated with the project undertakes. Each associated party listed should have a role.",
+                      "required": false,
+                      "allowMultiple": false,
+                      "owl2ObjectType": "property",
+                      "dataType": "text",
+                      "vocabulary": [
+                        "Agent",
+                        "Collaborator",
+                        "Partner",
+                        "Sponsor/funder",
+                        "Stakeholder"
+                      ],
+                      "synonymTerms": [
+                        {
+                          "nameOfStandard": "",
+                          "namespace": "",
+                          "property": ""
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "participationFees",
+                  "description": "An entity for specifying details of participation fees if they are applicable.",
+                  "required": false,
+                  "allowMultiple": false,
+                  "owl2ObjectType": "class",
+                  "type": "entity",
+                  "contains": [
+                    {
+                      "name": "participationFeeApplicable",
+                      "description": "Flag to indicate whether participation fees are applicable.",
+                      "required": false,
+                      "allowMultiple": false,
+                      "owl2ObjectType": "property",
+                      "dataType": "boolean"
+                    },
+                    {
+                      "name": "participationFeeAmount",
+                      "description": "The currency amount for a fee to participate in the project.",
+                      "required": false,
+                      "allowMultiple": false,
+                      "owl2ObjectType": "property",
+                      "dataType": "number"
+                    }
+                  ]
+                },
+                {
+                  "name": "projectHowToParticipate",
+                  "description": "Free text description of how people can get involved in the project. Textual instructions for joining the project.",
+                  "required": false,
+                  "allowMultiple": false,
+                  "owl2ObjectType": "property",
+                  "dataType": "text"
+                },
+                {
+                  "name": "projectTask",
+                  "description": "Tasks of the participant (Short description of what needs to be done by the participant, written in a way that is human readable/friendly)",
+                  "required": false,
+                  "allowMultiple": false,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "Core Ontology of Scientific Investigation",
+                      "namespace": "http://purl.org/net/cosi#",
+                      "property": "cosi:hasActivity"
+                    }
+                  ]
+                },
+                {
+                  "name": "projectOutcome",
+                  "description": "The outcome(s) achieved or delivered by a project.",
+                  "required": false,
+                  "allowMultiple": true,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "Core Ontology of Scientific Investigation",
+                      "namespace": "http://purl.org/net/cosi#",
+                      "property": "cosi:hasConclusion"
+                    }
+                  ]
+                },
+                {
+                  "name": "scientificProcessInvolved",
+                  "description": "Parts of the process of science that participants exercise",
+                  "required": false,
+                  "allowMultiple": true,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "vocabulary": [
+                    "Annotation",
+                    "Audio or video recording",
+                    "Classification or tagging",
+                    "DIY hacking/making",
+                    "Data analysis",
+                    "Data entry",
+                    "Download software for distributed computing",
+                    "Finding entities",
+                    "Geolocation",
+                    "Identification",
+                    "Learning",
+                    "Measurement",
+                    "Observation",
+                    "Photography",
+                    "Problem solving",
+                    "Sample analysis",
+                    "Site selection and/or description",
+                    "Specimen/sample collection",
+                    "Transcription"
+                  ],
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "Core Ontology of Scientific Investigation",
+                      "namespace": "http://purl.org/net/cosi#",
+                      "property": "cosi:hasProcedure"
+                    }
+                  ]
+                },
+                {
+                  "name": "numberOfScientificPublications",
+                  "description": "Number of peer reviewed publications referencing the project and/or project datasets.",
+                  "required": false,
+                  "allowMultiple": false,
+                  "owl2ObjectType": "property",
+                  "dataType": "number"
+                },
+                {
+                  "name": "numberOfOtherPublications",
+                  "description": "Number of reports/grey literature publications referencing the project and/or project datasets.",
+                  "required": false,
+                  "allowMultiple": false,
+                  "owl2ObjectType": "property",
+                  "dataType": "number"
+                },
+                {
+                  "name": "projectAdditionalInformation",
+                  "description": "Supplemental information for any project-specific data administrators want to make available",
+                  "required": false,
+                  "allowMultiple": false,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "Core Ontology of Scientific Investigation",
+                      "namespace": "http://purl.org/net/cosi#",
+                      "property": "cosi:hasRelatedMaterial"
+                    }
+                  ]
+                },
+                {
+                  "name": "projectCountry",
+                  "description": "The country in which the project is being undertaken. This may be multiple countries. Select list of countries. Used for enabling nationalised views of projects in order to make searchability and applicability of projects more nationally relevant for users. Applies the ISO 3166: 2006 standard for country names.",
+                  "required": false,
+                  "allowMultiple": true,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "vocabulary": [
+                    "Afghanistan",
+                    "Åland Islands",
+                    "Albania",
+                    "Algeria",
+                    "American Samoa",
+                    "Andorra",
+                    "Angola",
+                    "Anguilla",
+                    "Antarctica",
+                    "Antigua and Barbuda",
+                    "Argentina",
+                    "Armenia",
+                    "Aruba",
+                    "Australia",
+                    "Austria",
+                    "Azerbaijan",
+                    "Bahamas (the)",
+                    "Bahrain",
+                    "Bangladesh",
+                    "Barbados",
+                    "Belarus",
+                    "Belgium",
+                    "Belize",
+                    "Benin",
+                    "Bermuda",
+                    "Bhutan",
+                    "Bolivia (Plurinational State of)",
+                    "Bonaire, Sint Eustatius and Saba",
+                    "Bosnia and Herzegovina",
+                    "Botswana",
+                    "Bouvet Island",
+                    "Brazil",
+                    "British Indian Ocean Territory (the)",
+                    "Brunei Darussalam",
+                    "Bulgaria",
+                    "Burkina Faso",
+                    "Burundi",
+                    "Cabo Verde",
+                    "Cambodia",
+                    "Cameroon",
+                    "Canada",
+                    "Cayman Islands (the)",
+                    "Central African Republic (the)",
+                    "Chad",
+                    "Chile",
+                    "China",
+                    "Christmas Island",
+                    "Cocos (Keeling) Islands (the)",
+                    "Colombia",
+                    "Comoros (the)",
+                    "Congo (the Democratic Republic of the)",
+                    "Congo (the)",
+                    "Cook Islands (the)",
+                    "Costa Rica",
+                    "Côte d'Ivoire",
+                    "Croatia",
+                    "Cuba",
+                    "Curaçao",
+                    "Cyprus",
+                    "Czechia",
+                    "Denmark",
+                    "Djibouti",
+                    "Dominica",
+                    "Dominican Republic (the)",
+                    "Ecuador",
+                    "Egypt",
+                    "El Salvador",
+                    "Equatorial Guinea",
+                    "Eritrea",
+                    "Estonia",
+                    "Eswatini",
+                    "Ethiopia",
+                    "Falkland Islands (the) [Malvinas]",
+                    "Faroe Islands (the)",
+                    "Fiji",
+                    "Finland",
+                    "France",
+                    "French Guiana",
+                    "French Polynesia",
+                    "French Southern Territories (the)",
+                    "Gabon",
+                    "Gambia (the)",
+                    "Georgia",
+                    "Germany",
+                    "Ghana",
+                    "Gibraltar",
+                    "Greece",
+                    "Greenland",
+                    "Grenada",
+                    "Guadeloupe",
+                    "Guam",
+                    "Guatemala",
+                    "Guernsey",
+                    "Guinea",
+                    "Guinea-Bissau",
+                    "Guyana",
+                    "Haiti",
+                    "Heard Island and McDonald Islands",
+                    "Holy See (the)",
+                    "Honduras",
+                    "Hong Kong",
+                    "Hungary",
+                    "Iceland",
+                    "India",
+                    "Indonesia",
+                    "Iran (Islamic Republic of)",
+                    "Iraq",
+                    "Ireland",
+                    "Isle of Man",
+                    "Israel",
+                    "Italy",
+                    "Jamaica",
+                    "Japan",
+                    "Jersey",
+                    "Jordan",
+                    "Kazakhstan",
+                    "Kenya",
+                    "Kiribati",
+                    "Korea (the Democratic People's Republic of)",
+                    "Korea (the Republic of)",
+                    "Kuwait",
+                    "Kyrgyzstan",
+                    "Lao People's Democratic Republic (the)",
+                    "Latvia",
+                    "Lebanon",
+                    "Lesotho",
+                    "Liberia",
+                    "Libya",
+                    "Liechtenstein",
+                    "Lithuania",
+                    "Luxembourg",
+                    "Macao",
+                    "Madagascar",
+                    "Malawi",
+                    "Malaysia",
+                    "Maldives",
+                    "Mali",
+                    "Malta",
+                    "Marshall Islands (the)",
+                    "Martinique",
+                    "Mauritania",
+                    "Mauritius",
+                    "Mayotte",
+                    "Mexico",
+                    "Micronesia (Federated States of)",
+                    "Moldova (the Republic of)",
+                    "Monaco",
+                    "Mongolia",
+                    "Montenegro",
+                    "Montserrat",
+                    "Morocco",
+                    "Mozambique",
+                    "Myanmar",
+                    "Namibia",
+                    "Nauru",
+                    "Nepal",
+                    "Netherlands (the)",
+                    "New Caledonia",
+                    "New Zealand",
+                    "Nicaragua",
+                    "Niger (the)",
+                    "Nigeria",
+                    "Niue",
+                    "Norfolk Island",
+                    "North Macedonia",
+                    "Northern Mariana Islands (the)",
+                    "Norway",
+                    "Oman",
+                    "Pakistan",
+                    "Palau",
+                    "Palestine, State of",
+                    "Panama",
+                    "Papua New Guinea",
+                    "Paraguay",
+                    "Peru",
+                    "Philippines (the)",
+                    "Pitcairn",
+                    "Poland",
+                    "Portugal",
+                    "Puerto Rico",
+                    "Qatar",
+                    "Réunion",
+                    "Romania",
+                    "Russian Federation (the)",
+                    "Rwanda",
+                    "Saint Barthélemy",
+                    "Saint Helena, Ascension and Tristan da Cunha",
+                    "Saint Kitts and Nevis",
+                    "Saint Lucia",
+                    "Saint Martin (French part)",
+                    "Saint Pierre and Miquelon",
+                    "Saint Vincent and the Grenadines",
+                    "Samoa",
+                    "San Marino",
+                    "Sao Tome and Principe",
+                    "Saudi Arabia",
+                    "Senegal",
+                    "Serbia",
+                    "Seychelles",
+                    "Sierra Leone",
+                    "Singapore",
+                    "Sint Maarten (Dutch part)",
+                    "Slovakia",
+                    "Slovenia",
+                    "Solomon Islands",
+                    "Somalia",
+                    "South Africa",
+                    "South Georgia and the South Sandwich Islands",
+                    "South Sudan",
+                    "Spain",
+                    "Sri Lanka",
+                    "Sudan (the)",
+                    "Suriname",
+                    "Svalbard and Jan Mayen",
+                    "Sweden",
+                    "Switzerland",
+                    "Syrian Arab Republic (the)",
+                    "Taiwan (Province of China)",
+                    "Tajikistan",
+                    "Tanzania, the United Republic of",
+                    "Thailand",
+                    "Timor-Leste",
+                    "Togo",
+                    "Tokelau",
+                    "Tonga",
+                    "Trinidad and Tobago",
+                    "Tunisia",
+                    "Turkey",
+                    "Turkmenistan",
+                    "Turks and Caicos Islands (the)",
+                    "Tuvalu",
+                    "Uganda",
+                    "Ukraine",
+                    "United Arab Emirates (the)",
+                    "United Kingdom of Great Britain and Northern Ireland (the)",
+                    "United States Minor Outlying Islands (the)",
+                    "United States of America (the)",
+                    "Uruguay",
+                    "Uzbekistan",
+                    "Vanuatu",
+                    "Venezuela (Bolivarian Republic of)",
+                    "Viet Nam",
+                    "Virgin Islands (British)",
+                    "Virgin Islands (U.S.)",
+                    "Wallis and Futuna",
+                    "Western Sahara*",
+                    "Yemen",
+                    "Zambia",
+                    "Zimbabwe"
+                  ]
+                },
+                {
+                  "name": "projectEquipment",
+                  "description": "Required or suggested equipment",
+                  "required": false,
+                  "allowMultiple": true,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "Core Ontology of Scientific Investigation",
+                      "namespace": "http://purl.org/net/cosi#",
+                      "property": "cosi:hasInstrument"
+                    }
+                  ]
+                },
+                {
+                  "name": "projectExternalLinks",
+                  "description": "URL for links to any external resources associated with a project. These may include links to project mobile apps, social media pages, etc.",
+                  "required": false,
+                  "allowMultiple": true,
+                  "owl2ObjectType": "property",
+                  "dataType": "uri"
+                },
+                {
+                  "name": "projectFunding",
+                  "description": "Type(s) and source(s) of funding contributions to the project.",
+                  "required": false,
+                  "allowMultiple": true,
+                  "owl2ObjectType": "class",
+                  "type": "entity",
+                  "contains": [
+                    {
+                      "name": "projectFundingSource",
+                      "description": "Type of name of the contributor(s)of funding to the project",
+                      "required": false,
+                      "allowMultiple": false,
+                      "owl2ObjectType": "property",
+                      "dataType": "text"
+                    },
+                    {
+                      "name": "projectFundingSourcePercentageAmount",
+                      "description": "Percentage of funding contribution for each funding source or funding contributor",
+                      "required": false,
+                      "allowMultiple": false,
+                      "owl2ObjectType": "property",
+                      "dataType": "number",
+                      "validate": "min[0],max[100]"
+                    },
+                    {
+                      "name": "projectFundingSourceCurrencyAmount",
+                      "description": "Actual amount in local country currency of funding contribution for each funding source or funding contributor",
+                      "required": false,
+                      "allowMultiple": false,
+                      "owl2ObjectType": "property",
+                      "dataType": "number",
+                      "validate": "min[0]"
+                    },
+                    {
+                      "name": "projectFundingSourceType",
+                      "description": "Type of funding source(s) contributing to the project",
+                      "required": false,
+                      "allowMultiple": false,
+                      "owl2ObjectType": "property",
+                      "dataType": "text",
+                      "vocabulary": [
+                        {
+                          "name": "fundingSourceTypeSubsetA",
+                          "type": "array",
+                          "vocabularySubset": [
+                            "Public - national",
+                            "Public – state",
+                            "Public - local",
+                            "Public - in-kind",
+                            "Private - in-kind",
+                            "Private - industry/corporate",
+                            "Private - philanthropic",
+                            "Private - bequeath/other",
+                            "Private - NGO"
+                          ]
+                        },
+                        {
+                          "name": "fundingSourceTypeSubsetB",
+                          "type": "array",
+                          "vocabularySubset": [
+                            "NSF Grants",
+                            "Direct Funding from a Federal Agency",
+                            "Direct Funding from the Federal Government",
+                            "Private Partnerships",
+                            "Museum Partnerships",
+                            "University Partnerships",
+                            "Grants from Foundations",
+                            "Grants from non-NSF Federal Agencies",
+                            "Other"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "projectParticipants",
+                  "description": "Number of project participants.",
+                  "required": false,
+                  "allowMultiple": false,
+                  "owl2ObjectType": "class",
+                  "type": "entity",
+                  "contains": [
+                    {
+                      "name": "projectParticipantsNumberOfActive",
+                      "description": "Number of active participants based on project's definition of activity",
+                      "required": false,
+                      "allowMultiple": false,
+                      "owl2ObjectType": "property",
+                      "dataType": "number"
+                    },
+                    {
+                      "name": "projectParticipantsTotalRegistered",
+                      "description": "Total number of registered participants",
+                      "required": false,
+                      "allowMultiple": false,
+                      "owl2ObjectType": "property",
+                      "dataType": "number"
+                    },
+                    {
+                      "name": "projectParticipantAge",
+                      "description": "The age range classe(s) of participants",
+                      "required": false,
+                      "allowMultiple": true,
+                      "owl2ObjectType": "property",
+                      "dataType": "text",
+                      "vocabulary": [
+                        "Elementary school (6-10)",
+                        "Middle school (11-13)",
+                        "Youth/teen (up to 17)",
+                        "Families",
+                        "General public",
+                        "Targeted group"
+                      ],
+                      "synonymTerms": [
+                        {
+                          "nameOfStandard": "CAISE controlled vocabulary",
+                          "namespace": "CAISE",
+                          "property": ""
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "projectPlannedEndDate",
+                  "description": "The date that the project is planned to end. Applicable for projects operating over a defined period of time. The date on which the project ended or will end. Uses the ISO 8601:2004 (E) dateTime standard",
+                  "required": false,
+                  "allowMultiple": false,
+                  "owl2ObjectType": "property",
+                  "dataType": "date"
+                },
+                {
+                  "name": "projectPlannedStartDate",
+                  "description": "The date that the project is planned to commence. The date on which the project began or will begin. Uses the ISO 8601:2004 (E) dateTime standard",
+                  "required": false,
+                  "allowMultiple": false,
+                  "owl2ObjectType": "property",
+                  "dataType": "date"
+                },
+                {
+                  "name": "projectResearchType",
+                  "description": "Area of research covered by the project (e.g., ecological research)",
+                  "required": false,
+                  "allowMultiple": false,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "vocabulary": [
+                    ""
+                  ],
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "Core Ontology of Scientific Investigation",
+                      "namespace": "http://purl.org/net/cosi#",
+                      "property": "cosi:hasFieldOfStudy"
+                    }
+                  ]
+                },
+                {
+                  "name": "projectScientificCollaborators",
+                  "description": "List of scientific collaborators; i.e. scientists or academic departments using the data collected",
+                  "required": false,
+                  "allowMultiple": true,
+                  "owl2ObjectType": "property",
+                  "dataType": "text",
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "Core Ontology of Scientific Investigation",
+                      "namespace": "http://purl.org/net/cosi#",
+                      "property": "cosi:hasInvestigator"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "activitySet",
+              "description": "An activity list comprises a set (array) of activities associated with a single project.",
+              "type": "array",
+              "required": false,
+              "allowMultiple": false,
+              "contains": [
+                {
+                  "name": "activity",
+                  "owl2ObjectType": "class",
+                  "type": "entity",
+                  "required": true,
+                  "allowMultiple": true,
+                  "description": "An activity comprises a schema definition which represents a specific data collection protocol and a schema definition for the metadata associated with all protocols. In the context of an activity, these exist as a singular pair. Usage of an activity is always made in the context of an event, ie. A non-persistent time-based usage of an observational data schema. Observational data schemas are domain and protocol specific, and may be published in other repositories.",
+                  "synonymTerms": [
+                    {
+                      "nameOfStandard": "Dublin Core ontology",
+                      "namespace": "http://purl.org/dc/dcmitype/Event",
+                      "class": "Event"
+                    }
+                  ],
+                  "contains": [
+                    {
+                      "name": "datasetMetadataSchema",
+                      "type": "entity",
+                      "owl2ObjectType": "class",
+                      "description": "The datasetMetadataSchema (DDM) describes the metadata pertaining to the specific observationalDataSchema selected and it's associated data. There is a 1:1 relationship between the datasetMetadataSchema and the observationalDataSchema. The datasetMetadataSchema is consistent for all classes of observationalDataDomains.",
+                      "allowMultiple": false,
+                      "synonymTerms": [
+                        {
+                          "nameOfStandard": "Data Catalog Vocabulary",
+                          "namespace": "https://www.w3.org/TR/vocab-dcat/#class-dataset",
+                          "class": "dcat:Dataset"
+                        }
+                      ],
+                      "contains": [
+                        {
+                          "name": "dmmCoreTerms",
+                          "type": "propertyList",
+                          "description": "",
+                          "synonymTerms": [
+                            {
+                              "nameOfStandard": "Data Catalog Vocabulary",
+                              "namespace": "https://www.w3.org/TR/vocab-dcat/#class-catalogrecord",
+                              "class": "dcat:CatalogRecord"
+                            }
+                          ],
+                          "property": [
+                            {
+                              "name": "dcterms:identifier",
+                              "description": "Persistent identifier of a dataset (associated to the project). Should equate to the datasetExternalId if data is stored in an external repository.",
+                              "required": true,
+                              "owl2ObjectType": "property",
+                              "dataType": "text",
+                              "allowMultiple": false,
+                              "synonymTerms": [
+                                {
+                                  "nameOfStandard": "Darwin Core",
+                                  "namespace": "http://rs.tdwg.org/dwc/terms/namespace/",
+                                  "property": "dwcterms:datasetID"
+                                },
+                                {
+                                  "nameOfStandard": "Core Ontology of Scientific Investigation",
+                                  "namespace": "http://purl.org/net/cosi#",
+                                  "property": "cosi:hasIdentifierValue"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "dcterms:dateSubmitted",
+                              "description": "The date a dataset submission was published into a receiving system. Uses the ISO 8601:2004 (E) dateTime standard",
+                              "required": true,
+                              "owl2ObjectType": "property",
+                              "dataType": "date",
+                              "allowMultiple": false,
+                              "synonymTerms": [
+                                {
+                                  "nameOfStandard": "ISO 19115",
+                                  "namespace": "ISO",
+                                  "property": "CI_Citation date"
+                                },
+                                {
+                                  "nameOfStandard": "PROV-DC",
+                                  "namespace": "http://www.w3.org/ns/prov#",
+                                  "property": "prov:generatedAtTime"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "dcterms:modified",
+                              "description": "The most recent dateTime at which the resource was changed. Uses the ISO 8601:2004 (E) dateTime standard",
+                              "required": true,
+                              "owl2ObjectType": "property",
+                              "dataType": "date",
+                              "allowMultiple": false,
+                              "synonymTerms": [
+                                {
+                                  "nameOfStandard": "Dublin Core",
+                                  "namespace": "http://purl.org/dc/terms/",
+                                  "property": "modified"
+                                },
+                                {
+                                  "nameOfStandard": "PROV-DC",
+                                  "namespace": "http://www.w3.org/ns/prov#",
+                                  "property": "prov:generatedAtTime"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "datasetStatus",
+                              "description": "Indicator of the current status of a dataset (e.g. if it already published)",
+                              "required": true,
+                              "owl2ObjectType": "property",
+                              "dataType": "text",
+                              "allowMultiple": false,
+                              "vocabulary": [
+                                ""
+                              ],
+                              "synonymTerms": [
+                                {
+                                  "nameOfStandard": "Core Ontology of Scientific Investigation",
+                                  "namespace": "http://purl.org/net/cosi#",
+                                  "property": "cosi:hasStatus"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "dcterms:title",
+                              "description": "The name of the dataset for discovery and citation purposes.",
+                              "required": true,
+                              "owl2ObjectType": "property",
+                              "dataType": "text",
+                              "allowMultiple": false,
+                              "synonymTerms": [
+                                {
+                                  "nameOfStandard": "Darwin Core",
+                                  "namespace": "http://rs.tdwg.org/dwc/terms/datasetName",
+                                  "property": "datasetName"
+                                },
+                                {
+                                  "nameOfStandard": "ISO 19115",
+                                  "namespace": "ISO",
+                                  "property": "CI_Citation.title"
+                                },
+                                {
+                                  "nameOfStandard": "Core Ontology of Scientific Investigation",
+                                  "namespace": "http://purl.org/net/cosi#",
+                                  "property": "cosi:hasTitle"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "dcterms:abstract",
+                              "description": "Abstract or description of the dataset.",
+                              "required": true,
+                              "owl2ObjectType": "property",
+                              "dataType": "text",
+                              "allowMultiple": false,
+                              "synonymTerms": [
+                                {
+                                  "nameOfStandard": "Core Ontology of Scientific Investigation",
+                                  "namespace": "http://purl.org/net/cosi#",
+                                  "property": "cosi:hasDescription"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "dcterms:accessRights",
+                              "description": "Category of rights to use IP contained in the dataset or a type of use applied to the dataset.",
+                              "required": true,
+                              "owl2ObjectType": "property",
+                              "dataType": "text",
+                              "allowMultiple": false,
+                              "vocabulary": [
+                                "Open access",
+                                "Embargoed access",
+                                "Restricted access",
+                                "Metadata only access"
+                              ],
+                              "synonymTerms": [
+                                {
+                                  "nameOfStandard": "Dublin Core ontology",
+                                  "namespace": "http://purl.org/dc/terms/",
+                                  "property": "dcterms:accessRights"
+                                },
+                                {
+                                  "nameOfStandard": "Data Catalog Vocabulary",
+                                  "namespace": "http://purl.org/dc/terms/",
+                                  "property": "dct:rights"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "dcterms:bibliographicCitation",
+                              "description": "Format to be structured as follows: 'Author/Rightsholder. (Year). Title of data set (Version number) [Description of form]. Retrieved from https://<website url>'.	The attribution text string to be cited by people who use the dataset.",
+                              "required": false,
+                              "owl2ObjectType": "property",
+                              "dataType": "text",
+                              "allowMultiple": false,
+                              "synonymTerms": [
+                                {
+                                  "nameOfStandard": "Dublin Core",
+                                  "namespace": "http://purl.org/dc/terms/",
+                                  "property": "dcterms:bibliographicCitation "
+                                }
+                              ]
+                            },
+                            {
+                              "name": "dcterms:rightsHolder",
+                              "description": "The name of the organisation which is the legal custodian of the dataset.",
+                              "required": true,
+                              "owl2ObjectType": "property",
+                              "dataType": "text",
+                              "allowMultiple": false,
+                              "synonymTerms": [
+                                {
+                                  "nameOfStandard": "Dublin Core ontology",
+                                  "namespace": "http://purl.org/dc/terms/",
+                                  "property": "dcterms:rightsHolder"
+                                },
+                                {
+                                  "nameOfStandard": "PROV-DC",
+                                  "namespace": "http://www.w3.org/ns/prov#",
+                                  "property": "prov:wasAttributedTo"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "dcterms:license",
+                              "description": "License applied to the dataset.",
+                              "required": true,
+                              "owl2ObjectType": "property",
+                              "dataType": "text",
+                              "allowMultiple": false,
+                              "vocabulary": [
+                                "Creative Commons zero (CC 0)",
+                                "Creative Commons Attribution (4.0) international (CC-BY 4.0)",
+                                "Creative Commons Attribution Non-commercial (CC-BY-NC)",
+                                "Creative Commons Attribution Share Alike (CC-BY-SA)",
+                                "Creative Commons Attribution Non-commercial Share Alike (CC-BY-NC-SA)"
+                              ],
+                              "synonymTerms": [
+                                {
+                                  "nameOfStandard": "Dublin Core",
+                                  "namespace": "http://purl.org/dc/terms/license",
+                                  "property": "dcterms:license"
+                                },
+                                {
+                                  "nameOfStandard": "Core Ontology of Scientific Investigation",
+                                  "namespace": "http://purl.org/net/cosi#",
+                                  "property": "cosi:hasLicenceInformation"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "datasetEncodingLanguage",
+                              "description": "The machine language the dataset and associated metadata is encoded in. Uses Unicode Standard UTF-8 (ISO/IEC 10646:2014 plus Amendment 1).",
+                              "required": false,
+                              "owl2ObjectType": "property",
+                              "dataType": "text",
+                              "allowMultiple": true,
+                              "synonymTerms": [
+                                {
+                                  "nameOfStandard": "ISO 19115",
+                                  "namespace": "ISO",
+                                  "property": "MD_DataIdentification.characterSet"
+                                },
+                                {
+                                  "nameOfStandard": "Dublin Core",
+                                  "namespace": "http://purl.org/dc/terms/",
+                                  "property": "dcterms:language"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "datesetStartDate",
+                              "description": "The date on which the dataset collection survey commences. This may reflect the earliest record in the dataset or when a survey is open to begin data recording. This date may be => the projectStartDate. Uses the ISO 8601:2004 (E) dateTime standard.",
+                              "required": true,
+                              "owl2ObjectType": "property",
+                              "dataType": "date",
+                              "allowMultiple": false,
+                              "synonymTerms": [
+                                {
+                                  "nameOfStandard": "",
+                                  "namespace": "",
+                                  "property": ""
+                                }
+                              ]
+                            },
+                            {
+                              "name": "datasetEndDate",
+                              "description": "The date on which the dataset collection survey concluded. Uses the ISO 8601:2004 (E) dateTime standard.",
+                              "required": false,
+                              "owl2ObjectType": "property",
+                              "dataType": "date",
+                              "allowMultiple": false,
+                              "synonymTerms": [
+                                {
+                                  "nameOfStandard": "",
+                                  "namespace": "",
+                                  "property": ""
+                                }
+                              ]
+                            },
+                            {
+                              "name": "methodType",
+                              "description": "The type of methodology or sampling protocol used to collect the dataset.",
+                              "required": true,
+                              "owl2ObjectType": "property",
+                              "dataType": "text",
+                              "allowMultiple": false,
+                              "vocabulary": [
+                                "Opportunistic/ad-hoc observation",
+                                "Systematic method-based survey"
+                              ]
+                            },
+                            {
+                              "name": "methodSpecification",
+                              "description": "Details of the methodology or sampling protocol used to collect the dataset.",
+                              "required": true,
+                              "owl2ObjectType": "class",
+                              "type": "entity",
+                              "allowMultiple": false,
+                              "contains": [
+                                {
+                                  "name": "dcterms:samplingProtocol",
+                                  "description": "The name of the methodology or sampling protocol used to collect the dataset.",
+                                  "required": false,
+                                  "owl2ObjectType": "property",
+                                  "dataType": "text",
+                                  "allowMultiple": false,
+                                  "vocabulary": [
+                                    "Air quality - Fixed sensor",
+                                    "Air quality - Mobile sensor",
+                                    "Bat survey - Echolocation recorder",
+                                    "Bat survey - Harp trapping",
+                                    "Beach profile survey - Emery method",
+                                    "Beach profile survey - Optical method",
+                                    "Bird survey - Distance sample (along transect)",
+                                    "Bird survey - Fixed-area",
+                                    "Bird survey - Fixed-time",
+                                    "Bird survey - Fixed-time & Fixed-area",
+                                    "Bird survey - Mist netting",
+                                    "Fauna survey - 2-Ha track plot method",
+                                    "Fauna survey - Active search",
+                                    "Fauna survey - Aerial distance sampler method",
+                                    "Fauna survey - Cage trapping",
+                                    "Fauna survey - Call playback",
+                                    "Fauna survey - Camera trapping",
+                                    "Fauna survey - Elliot trapping",
+                                    "Fauna survey - Funnel trapping",
+                                    "Fauna survey - Hair tubes",
+                                    "Fauna survey - Nest box monitoring",
+                                    "Fauna survey - Pitfall trapping",
+                                    "Fauna survey - Scat survey",
+                                    "Fauna survey - Spotlight search",
+                                    "Fauna survey - Strip transect aerial survey",
+                                    "Fauna survey - Turtle trapping",
+                                    "Fish survey - Electrofishing",
+                                    "Fish survey - Set net/trap",
+                                    "Fish survey - Sweep netting",
+                                    "Insect survey - Black light",
+                                    "Insect survey - Malaise trap",
+                                    "Insect survey - Baited trap",
+                                    "Insect survey - Glue trap",
+                                    "Insect survey - Sweep netting",
+                                    "Riparian condition assessment - Rapid Appraisal of Riparian Condition (RARC)",
+                                    "Vegetation condition assessment",
+                                    "Vegetation survey - General transect & plot",
+                                    "Vegetation survey - Intensive inventory",
+                                    "Vegetation survey - Step point method",
+                                    "Water quality - Standardised physical/chemical attribute measurements",
+                                    "Water quality - Macroinvertebrate survey"
+                                  ],
+                                  "synonymTerms": [
+                                    {
+                                      "nameOfStandard": "Darwin Core",
+                                      "namespace": "http://rs.tdwg.org/dwc/iri/samplingProtocol",
+                                      "property": "samplingProtocol"
+                                    },
+                                    {
+                                      "nameOfStandard": "Core Ontology of Scientific Investigation",
+                                      "namespace": "http://purl.org/net/cosi#",
+                                      "property": "cosi:hasProcedure"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "methodAbstract",
+                                  "description": "Description of the methodology or sampling protocol used to collect the dataset.",
+                                  "required": false,
+                                  "owl2ObjectType": "property",
+                                  "dataType": "text",
+                                  "allowMultiple": false,
+                                  "synonymTerms": [
+                                    {
+                                      "nameOfStandard": "",
+                                      "namespace": "",
+                                      "property": ""
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "methodUrl",
+                                  "description": "URL address of an officially published article which describes the methodology or sampling protocol used to collect the dataset.",
+                                  "required": false,
+                                  "owl2ObjectType": "property",
+                                  "dataType": "url",
+                                  "allowMultiple": false,
+                                  "synonymTerms": [
+                                    {
+                                      "nameOfStandard": "",
+                                      "namespace": "",
+                                      "property": ""
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "methodDocUrl",
+                                  "description": "URL link to an uploaded document artefact which describes the methodology or sampling protocol used to collect the dataset.",
+                                  "required": false,
+                                  "owl2ObjectType": "property",
+                                  "dataType": "url",
+                                  "allowMultiple": false,
+                                  "synonymTerms": [
+                                    {
+                                      "nameOfStandard": "",
+                                      "namespace": "",
+                                      "property": ""
+                                    }
+                                  ]
+                                }
+                              ],
+                              "synonymTerms": [
+                                {
+                                  "nameOfStandard": "Core Ontology of Scientific Investigation",
+                                  "namespace": "http://purl.org/net/cosi#hasRelatedMateria",
+                                  "property": "cosi:hasRelatedMaterial"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "dataAccessMethod",
+                              "description": "A list of available methods for people to access the dataset.",
+                              "required": true,
+                              "owl2ObjectType": "property",
+                              "dataType": "text",
+                              "allowMultiple": true,
+                              "vocabulary": [
+                                "Open access structured raw data download from this system",
+                                "Open access opaque raw data file attached in this system",
+                                "Limited structured raw data access in this system - via request (subject to embargo)",
+                                "Opaque raw data file attached in this system - via request",
+                                "Open access structured raw data download from external source",
+                                "Closed access structured raw data download from external source",
+                                "Raw data not available",
+                                "Only derived/interpreted data products available"
+                              ],
+                              "synonymTerms": [
+                                {
+                                  "nameOfStandard": "",
+                                  "namespace": "",
+                                  "property": ""
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "dmmExtensionTerms",
+                          "type": "propertyList",
+                          "description": "",
+                          "synonymTerms": [
+                            {
+                              "nameOfStandard": "Data Catalog Vocabulary",
+                              "namespace": "https://www.w3.org/TR/vocab-dcat/#class-catalogrecord",
+                              "class": "dcat:CatalogRecord"
+                            }
+                          ],
+                          "property": [
+                            {
+                              "name": "datasetUpdateFrequency",
+                              "description": "How often the dataset is updated.",
+                              "required": false,
+                              "owl2ObjectType": "property",
+                              "dataType": "text",
+                              "allowMultiple": false,
+                              "vocabulary": [
+                                "Triennial",
+                                "Biennial",
+                                "Annual",
+                                "Semiannual",
+                                "Three times a year",
+                                "Quarterly",
+                                "Bimonthly",
+                                "Monthly",
+                                "Semimonthly",
+                                "Biweekly",
+                                "Three times a month",
+                                "Weekly",
+                                "Semiweekly",
+                                "Three times a week",
+                                "Daily",
+                                "Continuous",
+                                "Irregular"
+                              ],
+                              "synonymTerms": [
+                                {
+                                  "nameOfStandard": "dcterms",
+                                  "namespace": "http://purl.org/dc/terms/accrualPeriodicity",
+                                  "property": "dcterms:accrualPeriodicity"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "datasetExternalUrl",
+                              "description": "Web location where the dataset will be published.",
+                              "required": false,
+                              "owl2ObjectType": "property",
+                              "dataType": "text",
+                              "allowMultiple": true,
+                              "synonymTerms": [
+                                {
+                                  "nameOfStandard": "",
+                                  "namespace": "",
+                                  "property": ""
+                                }
+                              ]
+                            },
+                            {
+                              "name": "dcat:downloadURL",
+                              "description": "A URL from which dataset observation records can be accessed and downloaded.",
+                              "required": false,
+                              "owl2ObjectType": "property",
+                              "dataType": "text",
+                              "allowMultiple": false,
+                              "synonymTerms": [
+                                {
+                                  "nameOfStandard": "Data Catalog Vocabulary (DCAT)",
+                                  "namespace": "http://purl.org/dc/terms/",
+                                  "property": "dct:downloadURL"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "datasetGeographicCoverage",
+                              "description": "Geographic/spatial scope of coverage of the collection sites of data records within the dataset. Uses OGC GeoAPI (09-083r3) standard.",
+                              "required": true,
+                              "owl2ObjectType": "property",
+                              "dataType": "geoObject",
+                              "allowMultiple": false,
+                              "formatOptions": [
+                                "geoJSON",
+                                "WKT",
+                                "SHP"
+                              ]
+                            },
+                            {
+                              "name": "cosi:hasHypothesis",
+                              "description": ".",
+                              "required": false,
+                              "owl2ObjectType": "property",
+                              "dataType": "text",
+                              "allowMultiple": false,
+                              "synonymTerms": [
+                                {
+                                  "nameOfStandard": "Core Ontology of Scientific Investigation",
+                                  "namespace": "http://purl.org/net/cosi#",
+                                  "property": "cosi:hasHypothesis"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "cosi:hasInstrument",
+                              "description": ".",
+                              "required": false,
+                              "owl2ObjectType": "property",
+                              "dataType": "text",
+                              "allowMultiple": true,
+                              "synonymTerms": [
+                                {
+                                  "nameOfStandard": "Core Ontology of Scientific Investigation",
+                                  "namespace": "http://purl.org/net/cosi#",
+                                  "property": "cosi:hasInstrument"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "dataAccuracyDeclarations",
+                              "description": "Generalised categories that best reflect the accuracy of records in the dataset.",
+                              "required": true,
+                              "owl2ObjectType": "class",
+                              "type": "entity",
+                              "allowMultiple": true,
+                              "category": [
+                                {
+                                  "name": "spatialAccuracy",
+                                  "description": "A generalised category that best reflects the least spatially accurate record in the dataset.",
+                                  "required": true,
+                                  "owl2ObjectType": "property",
+                                  "dataType": "text",
+                                  "allowMultiple": false,
+                                  "Vocabulary": [
+                                    "High",
+                                    "Medium",
+                                    "Low"
+                                  ]
+                                },
+                                {
+                                  "name": "temporalAccuracy",
+                                  "description": "A generalised category that best reflects the least accurate record in the dataset in respect to date of the observation.",
+                                  "required": true,
+                                  "owl2ObjectType": "property",
+                                  "dataType": "text",
+                                  "allowMultiple": false,
+                                  "Vocabulary": [
+                                    "High",
+                                    "Medium",
+                                    "Low"
+                                  ]
+                                },
+                                {
+                                  "name": "speciesIdentification",
+                                  "description": "A generalised category that best reflects the least accurate record in the dataset for species identification. Choose 'Not applicable' species fields are not included in the dataset.",
+                                  "required": true,
+                                  "owl2ObjectType": "property",
+                                  "dataType": "text",
+                                  "allowMultiple": false,
+                                  "Vocabulary": [
+                                    "High",
+                                    "Medium",
+                                    "Low",
+                                    "Not applicable"
+                                  ]
+                                },
+                                {
+                                  "name": "nonTaxonomicAccuracy",
+                                  "description": "A generalised category that best reflects the least accurate record in the dataset in respect to non-biodiversity attributes.",
+                                  "required": true,
+                                  "owl2ObjectType": "property",
+                                  "dataType": "text",
+                                  "allowMultiple": false,
+                                  "Vocabulary": [
+                                    "High",
+                                    "Medium",
+                                    "Low"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "dataQualityAssuranceMethod",
+                              "description": "Description of the types of data quality assurance methods that were applied in capturing, curating and managing the dataset.",
+                              "required": true,
+                              "owl2ObjectType": "property",
+                              "dataType": "text",
+                              "allowMultiple": true,
+                              "vocabulary": [
+                                "Data owner curated",
+                                "Subject matter expert record verification",
+                                "Crowd-sourced record verification",
+                                "Record annotation",
+                                "System supported data attribute configuration",
+                                "No DQ methods used",
+                                "Not applicable"
+                              ],
+                              "synonymTerms": [
+                                {
+                                  "nameOfStandard": "",
+                                  "namespace": "",
+                                  "property": ""
+                                }
+                              ]
+                            },
+                            {
+                              "name": "dataQualityAssuranceDescription",
+                              "description": "Detailed description of the methods used to quality assure the dataset both during capture and post processing. This is important for data users to understand the processes applied to the data to verify or enhance it's quality for use.",
+                              "required": false,
+                              "owl2ObjectType": "property",
+                              "dataType": "text",
+                              "allowMultiple": false
+                            },
+                            {
+                              "name": "usageGuide",
+                              "description": "Description of any constraints and biases in the dataset which are associated with how the data collection methodology was applied, eg. Concentration of data points along access networks, targeted/non-random approaches causing bias towards certain factors at the expense of other factors, etc.",
+                              "required": false,
+                              "owl2ObjectType": "property",
+                              "dataType": "text",
+                              "allowMultiple": false
+                            },
+                            {
+                              "name": "activityCount",
+                              "description": "Number of data recording events in the dataset",
+                              "required": false,
+                              "owl2ObjectType": "property",
+                              "dataType": "number",
+                              "allowMultiple": false
+                            },
+                            {
+                              "name": "dataManagementPlan",
+                              "description": "Data management plan details",
+                              "required": true,
+                              "owl2ObjectType": "class",
+                              "type": "entity",
+                              "allowMultiple": false,
+                              "contains": [
+                                {
+                                  "name": "isDataManagementPolicyDocumented",
+                                  "description": "Indicator of whether a data management plan has been prepared for the dataset.",
+                                  "required": true,
+                                  "owl2ObjectType": "property",
+                                  "dataType": "boolean",
+                                  "allowMultiple": false
+                                },
+                                {
+                                  "name": "dataManagementPolicyDescription",
+                                  "description": "Description of data management policy",
+                                  "required": false,
+                                  "owl2ObjectType": "property",
+                                  "dataType": "text",
+                                  "allowMultiple": false
+                                },
+                                {
+                                  "name": "dataManagementPolicyURL",
+                                  "description": "Link to data management policy description",
+                                  "required": false,
+                                  "owl2ObjectType": "property",
+                                  "dataType": "url",
+                                  "allowMultiple": false
+                                },
+                                {
+                                  "name": "dataManagementPolicyDocument",
+                                  "description": "Document describing data management policy",
+                                  "required": false,
+                                  "owl2ObjectType": "property",
+                                  "dataType": "url",
+                                  "allowMultiple": true
+                                },
+                                {
+                                  "name": "dataManagementPrinciplesConformance",
+                                  "description": "Assessment of the conformance of the data management principles applied to the dataset with standard GEOlabels.",
+                                  "required": true,
+                                  "owl2ObjectType": "property",
+                                  "dataType": "text",
+                                  "allowMultiple": true
+                                }
+                              ],
+                              "synonymTerms": [
+                                {
+                                  "nameOfStandard": "Core Ontology of Scientific Investigation",
+                                  "namespace": "http://purl.org/net/cosi#hasRelatedMaterial",
+                                  "property": "cosi:hasRelatedMaterial"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "observationalData",
+                      "type": "class",
+                      "description": "The observationalDataDomain contains an array of different domain schemas (eg. biodiversity, water, atmosphere, ecology, geology, geomorphology, astronomy, etc.). Each domain will contain an array of standard protocols which apply in that domain context. The domains listed are not a comprehensive list and are expected to be appended to over time as new domains are specified and appropriate samplingProtocol standards are defined for them. This class object serves only to structurally differentiate and describe the different domains and is not a structural element of the observationalDataModel (ODM).",
+                      "allowMultiple": false,
+                      "required": true,
+                      "domainOptions": [
+                        {
+                          "name": "biodiversity",
+                          "type": "domainClass",
+                          "description": "",
+                          "applicableDataStandards": [
+                            {
+                              "applicableStandardName": "Darwin Core",
+                              "description": "Darwin Core is a standard which is used worldwide in biodiversity informatics community for recording and sharing biodiversity occurrence data.",
+                              "namespaceUri": "http://rs.tdwg.org/dwc/terms/"
+                            },
+                            {
+                              "applicableStandardName": "Audubon Core",
+                              "description": "Audubon Core provides a standard for recording image information and is widely used .",
+                              "namespaceUri": ""
+                            }
+                          ]
+                        },
+                        {
+                          "name": "water",
+                          "type": "domainClass",
+                          "description": "",
+                          "applicableDataStandards": [
+                            {
+                              "applicableStandardName": "Water ML / Water Data Transfer Format",
+                              "description": "",
+                              "namespaceUri": ""
+                            },
+                            {
+                              "applicableStandardName": "Observations and Measurements",
+                              "description": "",
+                              "namespaceUri": "https://www.opengeospatial.org/standards/om"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "ecology",
+                          "type": "domainClass",
+                          "description": "",
+                          "applicableDataStandards": [
+                            {
+                              "applicableStandardName": "Ecological Metadata Language",
+                              "description": "",
+                              "namespaceUri": "https://knb.ecoinformatics.org/external//emlparser/docs/index.html"
+                            },
+                            {
+                              "applicableStandardName": "Observations and Measurements",
+                              "description": "",
+                              "namespaceUri": "https://www.opengeospatial.org/standards/om"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "geography",
+                          "type": "domainClass",
+                          "description": "",
+                          "applicableDataStandards": [
+                            {
+                              "applicableStandardName": "Geography Markup Language",
+                              "description": "",
+                              "namespaceUri": "https://www.opengeospatial.org/standards/gml"
+                            },
+                            {
+                              "applicableStandardName": "Observations and Measurements",
+                              "description": "",
+                              "namespaceUri": "https://www.opengeospatial.org/standards/om"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "astronomyAndPlanetarySciences",
+                          "type": "domainClass",
+                          "description": "",
+                          "applicableDataStandards": [
+                            {
+                              "applicableStandardName": "Astronomy Visualization Metadata Standard",
+                              "description": "",
+                              "namespaceUri": "https://www.virtualastronomy.org/avm_metadata.php"
+                            },
+                            {
+                              "applicableStandardName": "Observations and Measurements",
+                              "description": "",
+                              "namespaceUri": "https://www.opengeospatial.org/standards/om"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "marine",
+                          "type": "domainClass",
+                          "description": "",
+                          "applicableDataStandards": [
+                            {
+                              "applicableStandardName": "Marine TLO ontology",
+                              "description": "MarineTLO is a top-level ontology for the marine domain (also applicable to the terrestrial domain).",
+                              "namespaceUri": "http://ics.forth.gr/Ontology/MarineTLO/icore#"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,731 @@
+
+@prefix : <http://defs-dev.opengis.net/def/appschema/citsci/ppsr-costmod/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix datacite: <https://schema.datacite.org/> .
+
+<http://defs-dev.opengis.net/def/appschema/citsci/ppsr-costmod> rdf:type owl:Ontology ;
+  rdfs:label "PPSR Core Ontology proposal from EU COST action" ;
+   skos:changeNote "Manually updated by Rob Atkinson to fix syntax after graphml conversion and add metadata and namespaces" ;
+.
+
+# Classes
+
+:UNSDSubGoal  a  owl:Class  .
+:Infrastucture  a  owl:Class  .
+:Tag  a  owl:Class  .
+:Origin  a  owl:Class  .
+:DateModified  a  owl:Class  .
+:FundingSource  a  owl:Class  .
+:Role  a  owl:Class  .
+   :Role  rdfs:comment """controlled voc (participant, volunteer, etc.)"""  .
+:UNRegion  a  owl:Class  .
+:Agent  a  owl:Class  ;
+  skos:changeNote "Manually updated by Rob Atkinson to fix syntax after graphml conversion be a prov:Agent subclass to isolate statements from other uses of Prov" ;
+  rdfs:subClassOf prov:Agent .
+
+:DatasetURL  a  owl:Class  .
+:Class__representing_the_so_far_implicit_concepts_  a  owl:Class  .
+   :Class__representing_the_so_far_implicit_concepts_  rdfs:comment """this area might appear in different colors for explaining interlinkages"""  .
+:EndDate  a  owl:Class  .
+:AdministrativeUnitCode  a  owl:Class  .
+   :AdministrativeUnitCode  rdfs:comment """e.g. 009, 019, 150, IT, DE, etc."""  .
+:InternationalSponsor  a  owl:Class  .
+:DataSet  a  owl:Class  .
+:ExternalID  a  owl:Class  .
+:License  a  owl:Class  .
+:Keyword  a  owl:Class  .
+   :Keyword  rdfs:comment """renamed from: Keywords"""  .
+:NationalSponsor  a  owl:Class  .
+:ProjectRecord  a  owl:Class  .
+:GeographicExtent  a  owl:Class  .
+:WebPage  a  owl:Class  .
+:NASA  a  owl:Class  .
+:Software  a  owl:Class  .
+
+:Phone  a  owl:Class  .
+:Observation  a  owl:Class  .
+:Outcome  a  owl:Class  .
+:IntendedOutcome  a  owl:Class  .
+   :IntendedOutcome  rdfs:comment """renamed from: IntendedOutcomes"""  .
+:AdministrativeUnitType  a  owl:Class  .
+   :AdministrativeUnitType  rdfs:comment """e.g. UNRegion, NUTS (Level 1), etc."""  .
+:Logo  a  owl:Class  .
+:Organisation  a  owl:Class  .
+   :Organisation  rdfs:comment """e.g. OSM Foundation (as a legal entity)"""  .
+:Class_representing_a_PPSR_CCM_element__maybe_with_new_name_  a  owl:Class  .
+   :Class_representing_a_PPSR_CCM_element__maybe_with_new_name_  rdfs:comment """maybe with examples written here"""  .
+:DatasetTemporalCoverage  a  owl:Class  .
+:DataGatheringCampaign  a  owl:Class  .
+   :DataGatheringCampaign  rdfs:comment """e.g. Mapping Party, BioBlitz"""  .
+:Another_Class__representing_the_so_far_implicit_concepts_  a  owl:Class  .
+   :Another_Class__representing_the_so_far_implicit_concepts_  rdfs:comment """maybe with examples written here"""  .
+:DateUpdated  a  owl:Class  .
+:Dataset  a  owl:Class  .
+:StartDate  a  owl:Class  .
+:ParticipationTask  a  owl:Class  .
+   :ParticipationTask  rdfs:comment """consider calling: Task"""  .
+:Repository  a  owl:Class  .
+:EuropeanUnion  a  owl:Class  .
+:UpdateFrequency  a  owl:Class  .
+:Consortium  a  owl:Class  .
+   :Consortium  rdfs:comment """(where all memebrs are organisations)"""  .
+:Micro_Funder  a  owl:Class  .
+:DateCreated  a  owl:Class  .
+:DownloadURL  a  owl:Class  .
+:DatasetName  a  owl:Class  .
+:DateSubmitted  a  owl:Class  .
+:Point  a  owl:Class  .
+:YearOfBirth  a  owl:Class  .
+:ContactDetails  a  owl:Class  .
+   :ContactDetails  rdfs:comment """e.g. me@ourproject.au, +01 234567, etc."""  .
+:Motivation  a  owl:Class  .
+:Latitude  a  owl:Class  .
+:AccessRights  a  owl:Class  .
+:RequiredSkills  a  owl:Class  .
+:ContactPointType  a  owl:Class  .
+   :ContactPointType  rdfs:comment """e.g. ProjectContact, ProjectHostContact, etc."""  .
+:Distribution  a  owl:Class  .
+:DataValidationCampaign  a  owl:Class  .
+:GUID  a  owl:Class  .
+:ImageCredit  a  owl:Class  .
+:EncodingLanguage  a  owl:Class  .
+:DatasetScope  a  owl:Class  .
+:RecordTemporalExtent  a  owl:Class  .
+:Output  a  owl:Class  .
+:Person  a  owl:Class  .
+:FundingSourceType  a  owl:Class  .
+   :FundingSourceType  rdfs:comment """e.g. USFederalSponsor, EUSponsor, etc."""  .
+:SpatialAreaOfInterest  a  owl:Class  .
+   :SpatialAreaOfInterest  rdfs:comment """remaned from: GeographicExtent"""  .
+:DataQuality  a  owl:Class  .
+:Email  a  owl:Class  .
+:Participant_Age  a  owl:Class  .
+   :Participant_Age  rdfs:comment """consider calling: TargetAge"""  .
+:SpatialExtent  a  owl:Class  .
+:Gender  a  owl:Class  .
+:UNSDGIndicator  a  owl:Class  .
+:NUTSRegion  a  owl:Class  .
+:AdministrativeUnit  a  owl:Class  .
+:Hardware  a  owl:Class  .
+:FundingProgram  a  owl:Class  .
+:EUFrameworkProgramme  a  owl:Class  .
+   :EUFrameworkProgramme  rdfs:comment """H2020 (note:different spelling of Program by intention)"""  .
+:Topic  a  owl:Class  .
+   :Topic  rdfs:comment """renamed fro: Project Topic"""  .
+:GeographicAreaOfInterest  a  owl:Class  .
+   :GeographicAreaOfInterest  rdfs:comment """remaned from: GeographicExtent"""  .
+:Name  a  owl:Class  .
+   :Name  rdfs:comment """e.g. NASA, NSF, EU"""  .
+:Aim  a  owl:Class  .
+   :Aim  rdfs:comment """or better: Intention and hasIntention?"""  .
+:Equipment  a  owl:Class  .
+   :Equipment  rdfs:comment """consider calling: RequiredEquipment"""  .
+:ProjectFundingProgram  a  owl:Class  .
+:HowToParticipate  a  owl:Class  .
+:DatasetDescription  a  owl:Class  .
+:DatasetGeographicCoverage  a  owl:Class  .
+:Impact  a  owl:Class  .
+   :Impact  rdfs:comment """to be discussed"""  .
+:ContactPoint  a  owl:Class  .
+:DateDistributed  a  owl:Class  .
+:ProjectScope  a  owl:Class  .
+:Age  a  owl:Class  .
+:Call  a  owl:Class  .
+:ProjectActivity  a  owl:Class  .
+:ContactTyp  a  owl:Class  .
+   :ContactTyp  rdfs:comment """e.g. ProjectContact, ProjectHostContact, etc."""  .
+:NASA_ROSES  a  owl:Class  .
+:Submission  a  owl:Class  .
+:SoftwareDevelopment  a  owl:Class  .
+:TagType  a  owl:Class  .
+   :TagType  rdfs:comment """e.g. UserDefinedTag, FieldOfScience, etc."""  .
+:Difficulty  a  owl:Class  .
+:Crowdfunder  a  owl:Class  .
+:Geometry  a  owl:Class  .
+:Project  a  owl:Class  .
+:GroupOfAgents  a  owl:Class  .
+:Newly_propsoed_class  a  owl:Class  .
+   :Newly_propsoed_class  rdfs:comment """maybe with examples written here"""  .
+:Initiative  a  owl:Class  .
+   :Initiative  rdfs:comment """e.g. OSM"""  .
+:Objective  a  owl:Class  .
+:Campaign  a  owl:Class  .
+:Language  a  owl:Class  .
+:Image  a  owl:Class  .
+:Status  a  owl:Class  .
+:DatasetStatus  a  owl:Class  .
+:UNSDG  a  owl:Class  .
+:Activity  a  owl:Class  .
+:Association  a  owl:Class  .
+datacite:Contributor  a  owl:Class  .
+:DataCollectionMethod  a  owl:Class  .
+:USFederalSponsor  a  owl:Class  .
+:Extent  a  owl:Class  .
+:Duration  a  owl:Class  .
+:Longitude  a  owl:Class  .
+:InfrastructureFundingProgram  a  owl:Class  .
+:ID__GUID_  a  owl:Class  .
+:Properties  a  owl:Class  .
+:Polygon  a  owl:Class  .
+:MeansOfContact  a  owl:Class  .
+   :MeansOfContact  rdfs:comment """e.g. Email, Phone, etc."""  .
+:AssociatedPublications  a  owl:Class  .
+:Lineage  a  owl:Class  .
+:ProjectGeographicCoverage  a  owl:Class  .
+:Description  a  owl:Class  .
+:TemporalExtent  a  owl:Class  .
+
+# Axioms and Properties
+
+:UNDEF_Property  a  owl:ObjectProperty .
+## edge between non-class nodes: UNDEF_Property
+## edge between non-class nodes: UNDEF_Property
+## edge between non-class nodes: UNDEF_Property
+## edge between non-class nodes: UNDEF_Property
+## edge between non-class nodes: UNDEF_Property
+## edge between non-class nodes: UNDEF_Property
+## edge between non-class nodes: UNDEF_Property
+## edge between non-class nodes: UNDEF_Property
+:hasID__GUID_  a  owl:ObjectProperty .
+:Dataset  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasID__GUID_ ; owl:allValuesFrom  :ID__GUID_]  .
+:hasDatasetName  a  owl:ObjectProperty .
+:Dataset  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasDatasetName ; owl:allValuesFrom  :DatasetName]  .
+:hasDescription  a  owl:ObjectProperty .
+:Dataset  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasDescription ; owl:allValuesFrom  :DatasetDescription]  .
+:hasWebpage  a  owl:ObjectProperty .
+:Dataset  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasWebpage ; owl:allValuesFrom  :DatasetURL]  .
+:hasAccessRights  a  owl:ObjectProperty .
+:Dataset  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasAccessRights ; owl:allValuesFrom  :AccessRights]  .
+:hasEncodingLanguage  a  owl:ObjectProperty .
+:Dataset  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasEncodingLanguage ; owl:allValuesFrom  :EncodingLanguage]  .
+:hasDatasetGeographicCoverage  a  owl:ObjectProperty .
+:Dataset  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasDatasetGeographicCoverage ; owl:allValuesFrom  :DatasetGeographicCoverage]  .
+:hasStatus  a  owl:ObjectProperty .
+:Dataset  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasStatus ; owl:allValuesFrom  :DatasetStatus]  .
+:hasDateModified  a  owl:ObjectProperty .
+:Dataset  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasDateModified ; owl:allValuesFrom  :DateModified]  .
+:hasUpdateFrequency  a  owl:ObjectProperty .
+:Dataset  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasUpdateFrequency ; owl:allValuesFrom  :UpdateFrequency]  .
+:hasDatasetScope  a  owl:ObjectProperty .
+:Dataset  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasDatasetScope ; owl:allValuesFrom  :DatasetScope]  .
+:hasDistribution  a  owl:ObjectProperty .
+:Dataset  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasDistribution ; owl:allValuesFrom  :Distribution]  .
+:hasLineage  a  owl:ObjectProperty .
+:Dataset  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasLineage ; owl:allValuesFrom  :Lineage]  .
+:isPartOf  a  owl:ObjectProperty .
+:DatasetGeographicCoverage  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :isPartOf ; owl:allValuesFrom  :ProjectGeographicCoverage]  .
+:hasDownloadURL  a  owl:ObjectProperty .
+:Distribution  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasDownloadURL ; owl:allValuesFrom  :DownloadURL]  .
+:hasDateDistributed  a  owl:ObjectProperty .
+:Distribution  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasDateDistributed ; owl:allValuesFrom  :DateDistributed]  .
+:hasLicense  a  owl:ObjectProperty .
+:Distribution  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasLicense ; owl:allValuesFrom  :License]  .
+:isPrimarySourceFor  a  owl:ObjectProperty .
+:Submission  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :isPrimarySourceFor ; owl:allValuesFrom  :Distribution]  .
+:hasDateSubmitted  a  owl:ObjectProperty .
+:Submission  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasDateSubmitted ; owl:allValuesFrom  :DateSubmitted]  .
+:DatasetScope  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :isPartOf ; owl:allValuesFrom  :ProjectScope]  .
+:hasRole  a  owl:ObjectProperty .
+:Agent  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasRole ; owl:allValuesFrom  :Role]  .
+:subClassOf  a  owl:ObjectProperty .
+datacite:Contributor  rdfs:subClassOf  :Agent  .
+:ContributesTo  a  owl:ObjectProperty .
+datacite:Contributor  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :ContributesTo ; owl:allValuesFrom  :Distribution]  .
+:hasProperties  a  owl:ObjectProperty .
+datacite:Contributor  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasProperties ; owl:allValuesFrom  :Properties]  .
+:Generates  a  owl:ObjectProperty .
+datacite:Contributor  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :Generates ; owl:allValuesFrom  :Submission]  .
+:Observation  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :isPartOf ; owl:allValuesFrom  :Submission]  .
+:Stores  a  owl:ObjectProperty .
+:Repository  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :Stores ; owl:allValuesFrom  :Dataset]  .
+:Repository  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :Stores ; owl:allValuesFrom  :Submission]  .
+:Repository  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :Stores ; owl:allValuesFrom  :Distribution]  .
+:new_hasContact  a  owl:ObjectProperty .
+:Dataset  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :new_hasContact ; owl:allValuesFrom  :ContactPoint]  .
+:new_hasDatasetTemporalCoverage  a  owl:ObjectProperty .
+:Dataset  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :new_hasDatasetTemporalCoverage ; owl:allValuesFrom  :DatasetTemporalCoverage]  .
+:new_hasDataQuality  a  owl:ObjectProperty .
+:Dataset  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :new_hasDataQuality ; owl:allValuesFrom  :DataQuality]  .
+:new_hasAssociatedPublications  a  owl:ObjectProperty .
+:Dataset  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :new_hasAssociatedPublications ; owl:allValuesFrom  :AssociatedPublications]  .
+:new_hasDataCollectionMethod  a  owl:ObjectProperty .
+:Submission  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :new_hasDataCollectionMethod ; owl:allValuesFrom  :DataCollectionMethod]  .
+:new_hasSubmission  a  owl:ObjectProperty .
+:Dataset  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :new_hasSubmission ; owl:allValuesFrom  :Submission]  .
+:namedRelationship  a  owl:ObjectProperty .
+:Class__representing_the_so_far_implicit_concepts_  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :namedRelationship ; owl:allValuesFrom  :Class_representing_a_PPSR_CCM_element__maybe_with_new_name_]  .
+:Class__representing_the_so_far_implicit_concepts_  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :namedRelationship ; owl:allValuesFrom  :Newly_propsoed_class]  .
+:namedRelationship_to_another_class  a  owl:ObjectProperty .
+:Class__representing_the_so_far_implicit_concepts_  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :namedRelationship_to_another_class ; owl:allValuesFrom  :Another_Class__representing_the_so_far_implicit_concepts_]  .
+:hasGeograficExtent  a  owl:ObjectProperty .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasGeograficExtent ; owl:allValuesFrom  :GeographicExtent]  .
+:hasContactPoint  a  owl:ObjectProperty .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasContactPoint ; owl:allValuesFrom  :ContactPoint]  .
+:hasSpatialAreaOfInterest  a  owl:ObjectProperty .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasSpatialAreaOfInterest ; owl:allValuesFrom  :SpatialAreaOfInterest]  .
+:hasFundingProgram  a  owl:ObjectProperty .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasFundingProgram ; owl:allValuesFrom  :FundingProgram]  .
+:describes  a  owl:ObjectProperty .
+:ProjectRecord  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :describes ; owl:allValuesFrom  :Project]  .
+:ProjectRecord  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasContactPoint ; owl:allValuesFrom  :ContactPoint]  .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasContactPoint ; owl:allValuesFrom  :ContactPoint]  .
+:hasProject  a  owl:ObjectProperty .
+:Initiative  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasProject ; owl:allValuesFrom  :Project]  .
+:hasContactDetails  a  owl:ObjectProperty .
+:MeansOfContact  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasContactDetails ; owl:allValuesFrom  :ContactDetails]  .
+:hasContact  a  owl:ObjectProperty .
+:Agent  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasContact ; owl:allValuesFrom  :ContactPoint]  .
+:hasInitiavite  a  owl:ObjectProperty .
+:Agent  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasInitiavite ; owl:allValuesFrom  :Initiative]  .
+:hasMotivation  a  owl:ObjectProperty .
+:Association  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasMotivation ; owl:allValuesFrom  :Motivation]  .
+:hasTemporalExtent  a  owl:ObjectProperty .
+:Association  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasTemporalExtent ; owl:allValuesFrom  :TemporalExtent]  .
+:Association  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasRole ; owl:allValuesFrom  :Role]  .
+:hasAgent  a  owl:ObjectProperty .
+:Association  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasAgent ; owl:allValuesFrom  :Agent]  .
+:hasAssociation  a  owl:ObjectProperty .
+:Activity  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasAssociation ; owl:allValuesFrom  :Association]  .
+:Organisation  rdfs:subClassOf  :Agent  .
+:Consortium  rdfs:subClassOf  :GroupOfAgents  .
+:hasType  a  owl:ObjectProperty .
+:ContactPoint  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasType ; owl:allValuesFrom  :ContactTyp]  .
+:hasMeansOfContact  a  owl:ObjectProperty .
+:ContactPoint  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasMeansOfContact ; owl:allValuesFrom  :MeansOfContact]  .
+:Person  rdfs:subClassOf  :Agent  .
+# :hasAffiliation__better:_affiliatedWith_  a  owl:ObjectProperty .
+#:Person  rdfs:subClassOf  
+#       [a owl:Restriction ; owl:onProperty :hasAffiliation__better:_affiliatedWith_ ; owl:allValuesFrom  :Organisation]  .
+:Email  rdfs:subClassOf  :MeansOfContact  .
+:GroupOfAgents  rdfs:subClassOf  :Agent  .
+:hasMember  a  owl:ObjectProperty .
+:GroupOfAgents  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasMember ; owl:allValuesFrom  :Agent]  .
+:Phone  rdfs:subClassOf  :MeansOfContact  .
+:Project  rdfs:subClassOf  :Activity  .
+:ContactPoint  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasContactDetails ; owl:allValuesFrom  :ContactDetails]  .
+:ContactPoint  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasMeansOfContact ; owl:allValuesFrom  :MeansOfContact]  .
+:hasContactPointType  a  owl:ObjectProperty .
+:ContactPoint  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasContactPointType ; owl:allValuesFrom  :ContactPointType]  .
+:hasName  a  owl:ObjectProperty .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasName ; owl:allValuesFrom  :Name]  .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasDescription ; owl:allValuesFrom  :Description]  .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasStatus ; owl:allValuesFrom  :Status]  .
+:hasEndDate  a  owl:ObjectProperty .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasEndDate ; owl:allValuesFrom  :EndDate]  .
+:hasStartDate  a  owl:ObjectProperty .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasStartDate ; owl:allValuesFrom  :StartDate]  .
+:hasWebPage  a  owl:ObjectProperty .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasWebPage ; owl:allValuesFrom  :WebPage]  .
+:hasIdentifier  a  owl:ObjectProperty .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasIdentifier ; owl:allValuesFrom  :GUID]  .
+:hasDuration  a  owl:ObjectProperty .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasDuration ; owl:allValuesFrom  :Duration]  .
+:EndDate  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :UNDEF_Property ; owl:allValuesFrom  :Status]  .
+:EndDate  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :UNDEF_Property ; owl:allValuesFrom  :Duration]  .
+:EndDate  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :UNDEF_Property ; owl:allValuesFrom  :Status]  .
+:StartDate  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :UNDEF_Property ; owl:allValuesFrom  :Duration]  .
+:StartDate  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :UNDEF_Property ; owl:allValuesFrom  :Status]  .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasDescription ; owl:allValuesFrom  :Description]  .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasIdentifier ; owl:allValuesFrom  :GUID]  .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasWebPage ; owl:allValuesFrom  :WebPage]  .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasName ; owl:allValuesFrom  :Name]  .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasSpatialAreaOfInterest ; owl:allValuesFrom  :SpatialAreaOfInterest]  .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasContactPoint ; owl:allValuesFrom  :ContactPoint]  .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasTemporalExtent ; owl:allValuesFrom  :TemporalExtent]  .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasStatus ; owl:allValuesFrom  :Status]  .
+:TemporalExtent  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasDuration ; owl:allValuesFrom  :Duration]  .
+:TemporalExtent  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasEndDate ; owl:allValuesFrom  :EndDate]  .
+:TemporalExtent  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasStartDate ; owl:allValuesFrom  :StartDate]  .
+:EndDate  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :UNDEF_Property ; owl:allValuesFrom  :Status]  .
+:EndDate  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :UNDEF_Property ; owl:allValuesFrom  :Duration]  .
+:StartDate  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :UNDEF_Property ; owl:allValuesFrom  :Duration]  .
+:hasCredit  a  owl:ObjectProperty .
+:Image  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasCredit ; owl:allValuesFrom  :ImageCredit]  .
+:Logo  rdfs:subClassOf  :Image  .
+:isIllustratedBy  a  owl:ObjectProperty .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :isIllustratedBy ; owl:allValuesFrom  :Image]  .
+:Topic  rdfs:subClassOf  :Tag  .
+:hasTag  a  owl:ObjectProperty .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasTag ; owl:allValuesFrom  :Tag]  .
+:hasOutcome  a  owl:ObjectProperty .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasOutcome ; owl:allValuesFrom  :Outcome]  .
+:hasAim  a  owl:ObjectProperty .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasAim ; owl:allValuesFrom  :Aim]  .
+:hasKeyword  a  owl:ObjectProperty .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasKeyword ; owl:allValuesFrom  :Keyword]  .
+:hasIntededOutcome  a  owl:ObjectProperty .
+:Aim  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasIntededOutcome ; owl:allValuesFrom  :IntendedOutcome]  .
+:Objective  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :UNDEF_Property ; owl:allValuesFrom  :IntendedOutcome]  .
+:TagType  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :UNDEF_Property ; owl:allValuesFrom  :Name]  .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasTag ; owl:allValuesFrom  :Tag]  .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasOutcome ; owl:allValuesFrom  :Outcome]  .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasAim ; owl:allValuesFrom  :Aim]  .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasKeyword ; owl:allValuesFrom  :Keyword]  .
+:Aim  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasIntededOutcome ; owl:allValuesFrom  :IntendedOutcome]  .
+:hasObjective  a  owl:ObjectProperty .
+:Aim  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasObjective ; owl:allValuesFrom  :Objective]  .
+:Tag  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasName ; owl:allValuesFrom  :Name]  .
+:hasTagType  a  owl:ObjectProperty .
+:Tag  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasTagType ; owl:allValuesFrom  :TagType]  .
+:FundingSource  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasName ; owl:allValuesFrom  :Name]  .
+:hasFundingSourceType  a  owl:ObjectProperty .
+:FundingSource  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasFundingSourceType ; owl:allValuesFrom  :FundingSourceType]  .
+:FundingProgram  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasIdentifier ; owl:allValuesFrom  :GUID]  .
+:FundingProgram  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasName ; owl:allValuesFrom  :Name]  .
+:FundingProgram  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasDescription ; owl:allValuesFrom  :Description]  .
+:hasFundingSource  a  owl:ObjectProperty .
+:FundingProgram  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasFundingSource ; owl:allValuesFrom  :FundingSource]  .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasFundingProgram ; owl:allValuesFrom  :FundingProgram]  .
+:hasCall  a  owl:ObjectProperty .
+:Topic  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasCall ; owl:allValuesFrom  :Call]  .
+:Micro_Funder  rdfs:subClassOf  :FundingSource  .
+:Crowdfunder  rdfs:subClassOf  :FundingSource  .
+:InfrastructureFundingProgram  rdfs:subClassOf  :FundingProgram  .
+:Infrastucture  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasFundingProgram ; owl:allValuesFrom  :InfrastructureFundingProgram]  .
+:EuropeanUnion  rdfs:subClassOf  :InternationalSponsor  .
+:NASA  rdfs:subClassOf  :USFederalSponsor  .
+:EUFrameworkProgramme  rdfs:subClassOf  :FundingProgram  .
+:NASA_ROSES  rdfs:subClassOf  :FundingProgram  .
+:InternationalSponsor  rdfs:subClassOf  :FundingSource  .
+:FundingSource  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasName ; owl:allValuesFrom  :Name]  .
+:hasTopic  a  owl:ObjectProperty .
+:FundingProgram  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasTopic ; owl:allValuesFrom  :Topic]  .
+:FundingProgram  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasIdentifier ; owl:allValuesFrom  :GUID]  .
+:FundingProgram  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasName ; owl:allValuesFrom  :Name]  .
+:FundingProgram  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasDescription ; owl:allValuesFrom  :Description]  .
+:FundingProgram  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasFundingSource ; owl:allValuesFrom  :FundingSource]  .
+:USFederalSponsor  rdfs:subClassOf  :NationalSponsor  .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasFundingProgram ; owl:allValuesFrom  :ProjectFundingProgram]  .
+:NationalSponsor  rdfs:subClassOf  :FundingSource  .
+:ProjectFundingProgram  rdfs:subClassOf  :FundingProgram  .
+:contains  a  owl:ObjectProperty .
+:SpatialExtent  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :contains ; owl:allValuesFrom  :SpatialExtent]  .
+:SpatialExtent  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasName ; owl:allValuesFrom  :Name]  .
+:hasGeometry  a  owl:ObjectProperty .
+:SpatialExtent  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasGeometry ; owl:allValuesFrom  :Geometry]  .
+:AdministrativeUnit  rdfs:subClassOf  :GeographicExtent  .
+:hasAdministrativeUnitType  a  owl:ObjectProperty .
+:AdministrativeUnit  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasAdministrativeUnitType ; owl:allValuesFrom  :AdministrativeUnitType]  .
+:hasAdministrativeUnitCode  a  owl:ObjectProperty .
+:AdministrativeUnit  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasAdministrativeUnitCode ; owl:allValuesFrom  :AdministrativeUnitCode]  .
+:Polygon  rdfs:subClassOf  :Geometry  .
+:hasCentroid  a  owl:ObjectProperty .
+:Polygon  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasCentroid ; owl:allValuesFrom  :Point]  .
+:Point  rdfs:subClassOf  :Geometry  .
+:hasLongitude  a  owl:ObjectProperty .
+:Point  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasLongitude ; owl:allValuesFrom  :Longitude]  .
+:hasLatitude  a  owl:ObjectProperty .
+:Point  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasLatitude ; owl:allValuesFrom  :Latitude]  .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasSpatialAreaOfInterest ; owl:allValuesFrom  :SpatialAreaOfInterest]  .
+:hasGeographicExtent  a  owl:ObjectProperty .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasGeographicExtent ; owl:allValuesFrom  :GeographicExtent]  .
+:hasSpatialExtent  a  owl:ObjectProperty .
+:SpatialAreaOfInterest  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasSpatialExtent ; owl:allValuesFrom  :SpatialExtent]  .
+:GeographicExtent  rdfs:subClassOf  :SpatialExtent  .
+:SpatialExtent  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasName ; owl:allValuesFrom  :Name]  .
+:SpatialExtent  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasGeometry ; owl:allValuesFrom  :Geometry]  .
+:SpatialExtent  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :contains ; owl:allValuesFrom  :SpatialExtent]  .
+:AdministrativeUnit  rdfs:subClassOf  :GeographicExtent  .
+:UNRegion  rdfs:subClassOf  :AdministrativeUnit  .
+:NUTSRegion  rdfs:subClassOf  :AdministrativeUnit  .
+:Polygon  rdfs:subClassOf  :Geometry  .
+:Polygon  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasCentroid ; owl:allValuesFrom  :Point]  .
+:Point  rdfs:subClassOf  :Geometry  .
+:hasAreaOfInterest  a  owl:ObjectProperty .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasAreaOfInterest ; owl:allValuesFrom  :SpatialAreaOfInterest]  .
+:hasExtent  a  owl:ObjectProperty .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasExtent ; owl:allValuesFrom  :Extent]  .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasStatus ; owl:allValuesFrom  :Status]  .
+:TemporalExtent  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :contains ; owl:allValuesFrom  :TemporalExtent]  .
+:TemporalExtent  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasEndDate ; owl:allValuesFrom  :EndDate]  .
+:TemporalExtent  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasStartDate ; owl:allValuesFrom  :StartDate]  .
+:TemporalExtent  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasDuration ; owl:allValuesFrom  :Duration]  .
+:TemporalExtent  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasName ; owl:allValuesFrom  :Name]  .
+:Extent  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasSpatialExtent ; owl:allValuesFrom  :SpatialExtent]  .
+:Extent  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasTemporalExtent ; owl:allValuesFrom  :TemporalExtent]  .
+:EndDate  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :UNDEF_Property ; owl:allValuesFrom  :Status]  .
+:EndDate  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :UNDEF_Property ; owl:allValuesFrom  :Duration]  .
+:StartDate  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :UNDEF_Property ; owl:allValuesFrom  :Duration]  .
+:StartDate  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :UNDEF_Property ; owl:allValuesFrom  :Status]  .
+:SpatialAreaOfInterest  rdfs:subClassOf  :Extent  .
+:GeographicExtent  rdfs:subClassOf  :SpatialExtent  .
+:explains  a  owl:ObjectProperty .
+:HowToParticipate  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :explains ; owl:allValuesFrom  :ParticipationTask]  .
+:hasDifficulty  a  owl:ObjectProperty .
+:ParticipationTask  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasDifficulty ; owl:allValuesFrom  :Difficulty]  .
+:hasTargetAge  a  owl:ObjectProperty .
+:ParticipationTask  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasTargetAge ; owl:allValuesFrom  :Participant_Age]  .
+:requiresEquipment  a  owl:ObjectProperty .
+:ParticipationTask  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :requiresEquipment ; owl:allValuesFrom  :Equipment]  .
+:requiresSkills  a  owl:ObjectProperty .
+:ParticipationTask  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :requiresSkills ; owl:allValuesFrom  :RequiredSkills]  .
+:ParticipationTask  rdfs:subClassOf  :Activity  .
+:hasActivity  a  owl:ObjectProperty .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasActivity ; owl:allValuesFrom  :ProjectActivity]  .
+:contributes__if_want_to_include_explicitly_  a  owl:ObjectProperty .
+:Campaign  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :contributes__if_want_to_include_explicitly_ ; owl:allValuesFrom  :DataSet]  .
+:Campaign  rdfs:subClassOf  :ProjectActivity  .
+:Campaign  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasAreaOfInterest ; owl:allValuesFrom  :GeographicAreaOfInterest]  .
+:DataGatheringCampaign  rdfs:subClassOf  :Campaign  .
+:DataValidationCampaign  rdfs:subClassOf  :Campaign  .
+:produces  a  owl:ObjectProperty .
+:ProjectActivity  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :produces ; owl:allValuesFrom  :Output]  .
+:hasParticipatonTask  a  owl:ObjectProperty .
+:ProjectActivity  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasParticipatonTask ; owl:allValuesFrom  :ParticipationTask]  .
+:ProjectActivity  rdfs:subClassOf  :Activity  .
+:Software  rdfs:subClassOf  :Output  .
+:SoftwareDevelopment  rdfs:subClassOf  :ProjectActivity  .
+:Hardware  rdfs:subClassOf  :Output  .
+:DataSet  rdfs:subClassOf  :Output  .
+:Association  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasMotivation ; owl:allValuesFrom  :Motivation]  .
+:Association  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasTemporalExtent ; owl:allValuesFrom  :TemporalExtent]  .
+:Association  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasRole ; owl:allValuesFrom  :Role]  .
+:Association  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasAgent ; owl:allValuesFrom  :Agent]  .
+:Person  rdfs:subClassOf  :Agent  .
+:hasYearOfBith  a  owl:ObjectProperty .
+:Person  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasYearOfBith ; owl:allValuesFrom  :YearOfBirth]  .
+:hasAge  a  owl:ObjectProperty .
+:Person  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasAge ; owl:allValuesFrom  :Age]  .
+:hasGender  a  owl:ObjectProperty .
+:Person  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasGender ; owl:allValuesFrom  :Gender]  .
+:Activity  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasAssociation ; owl:allValuesFrom  :Association]  .
+:hasOrigin  a  owl:ObjectProperty .
+:ProjectRecord  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasOrigin ; owl:allValuesFrom  :Origin]  .
+:hasExternalIdentifier  a  owl:ObjectProperty .
+:ProjectRecord  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasExternalIdentifier ; owl:allValuesFrom  :ExternalID]  .
+:ProjectRecord  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasIdentifier ; owl:allValuesFrom  :GUID]  .
+:hasNaturalLanguage  a  owl:ObjectProperty .
+:ProjectRecord  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasNaturalLanguage ; owl:allValuesFrom  :Language]  .
+:ProjectRecord  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :describes ; owl:allValuesFrom  :Project]  .
+:hasCreationDate  a  owl:ObjectProperty .
+:ProjectRecord  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasCreationDate ; owl:allValuesFrom  :DateCreated]  .
+:wasLastUpdated  a  owl:ObjectProperty .
+:ProjectRecord  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :wasLastUpdated ; owl:allValuesFrom  :DateUpdated]  .
+:DateUpdated  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :UNDEF_Property ; owl:allValuesFrom  :DateCreated]  .
+:ProjectRecord  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasContactPoint ; owl:allValuesFrom  :ContactPoint]  .
+:ProjectRecord  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasOrigin ; owl:allValuesFrom  :Origin]  .
+:ProjectRecord  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasExternalIdentifier ; owl:allValuesFrom  :ExternalID]  .
+:ProjectRecord  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasIdentifier ; owl:allValuesFrom  :GUID]  .
+:ProjectRecord  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasNaturalLanguage ; owl:allValuesFrom  :Language]  .
+:ProjectRecord  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :describes ; owl:allValuesFrom  :Project]  .
+:ProjectRecord  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasTemporalExtent ; owl:allValuesFrom  :RecordTemporalExtent]  .
+:DateUpdated  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :UNDEF_Property ; owl:allValuesFrom  :DateCreated]  .
+:RecordTemporalExtent  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasCreationDate ; owl:allValuesFrom  :DateCreated]  .
+:RecordTemporalExtent  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :wasLastUpdated ; owl:allValuesFrom  :DateUpdated]  .
+:RecordTemporalExtent  rdfs:subClassOf  :TemporalExtent  .
+:contributes  a  owl:ObjectProperty .
+:Outcome  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :contributes ; owl:allValuesFrom  :UNSDG]  .
+:addresses  a  owl:ObjectProperty .
+:Aim  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :addresses ; owl:allValuesFrom  :UNSDG]  .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasOutcome ; owl:allValuesFrom  :Outcome]  .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasAim ; owl:allValuesFrom  :Aim]  .
+:comprises  a  owl:ObjectProperty .
+:UNSDG  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :comprises ; owl:allValuesFrom  :UNSDSubGoal]  .
+:measuredBy  a  owl:ObjectProperty .
+:UNSDSubGoal  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :measuredBy ; owl:allValuesFrom  :UNSDGIndicator]  .
+:usesInfrastructure  a  owl:ObjectProperty .
+:Project  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :usesInfrastructure ; owl:allValuesFrom  :Infrastucture]  .
+:federates  a  owl:ObjectProperty .
+:Infrastucture  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :federates ; owl:allValuesFrom  :Infrastucture]  .
+:hasRepository  a  owl:ObjectProperty .
+:Infrastucture  rdfs:subClassOf  
+       [a owl:Restriction ; owl:onProperty :hasRepository ; owl:allValuesFrom  :Repository]  .

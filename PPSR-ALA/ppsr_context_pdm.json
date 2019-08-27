@@ -1,0 +1,23 @@
+{
+	"@context": "../utilities/json-schema-rdf-ldcontext.json",
+	"$schema": "http://json-schema.org/schema#",
+	"$id": "http://defs-dev.opengis.net/def/appschema/cs-ppsr?_profile=json-context",
+	"$comment": "This is a Linked Data context document for the PDM (stub only) module of PPSR-Core",
+	"Person": "http://xmlns.com/foaf/0.1/Person",
+	"xsd": "http://www.w3.org/2001/XMLSchema#",
+	"name": "http://xmlns.com/foaf/0.1/name",
+	"nickname": "http://xmlns.com/foaf/0.1/nick",
+	"ppsr": "http://defs-dev.opengis.net/def/appschema/cs-ppsr/",
+	"programId": {
+		"@id": "ppsr:programId", ,
+		"@type" "xsd:string"
+	}
+	"programName": {
+		"@id": "ppsr:programName",
+		"@type" "xsd:string"
+	}
+	"programDescription": {
+		"@id": "ppsr:programDescription",
+		"@type" "xsd:string"
+	}
+}
