@@ -1,0 +1,64 @@
+# baseURI: null
+
+@prefix composite: <http://www.topbraid.org/2007/05/composite.owl#> .
+@prefix forms: <http://www.topbraid.org/2007/01/forms.owl#> .
+@prefix inference: <http://www.topbraid.org/2007/06/inference.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix visual: <http://topbraid.org/visual#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[
+  a visual:Graph ;
+  visual:child [
+      a visual:Box ;
+      visual:depicts <http://defs-dev.opengis.net/def/appschema/citsci/ppsr-costmod> ;
+      visual:height "22"^^xsd:int ;
+      visual:width "501"^^xsd:int ;
+      visual:x "307"^^xsd:int ;
+      visual:y "69"^^xsd:int ;
+    ] ;
+  visual:child [
+      a visual:Box ;
+      visual:depicts <http://defs-dev.opengis.net/def/profiles/citisci/ppsr-costmod.ttl#ppsr-ala-qb> ;
+      visual:height "22"^^xsd:int ;
+      visual:width "228"^^xsd:int ;
+      visual:x "356"^^xsd:int ;
+      visual:y "371"^^xsd:int ;
+    ] ;
+  visual:child [
+      a visual:Box ;
+      visual:depicts <http://defs-dev.opengis.net/def/profiles/citisci/ppsr-costmod/ppsa-core-ala> ;
+      visual:height "22"^^xsd:int ;
+      visual:width "242"^^xsd:int ;
+      visual:x "21"^^xsd:int ;
+      visual:y "299"^^xsd:int ;
+    ] ;
+  visual:child [
+      a visual:Box ;
+      visual:depicts owl:Ontology ;
+      visual:height "22"^^xsd:int ;
+      visual:width "142"^^xsd:int ;
+      visual:x "866"^^xsd:int ;
+      visual:y "6"^^xsd:int ;
+    ] ;
+  visual:child [
+      a visual:Box ;
+      visual:depicts <http://www.w3.org/ns/dx/prof/Profile> ;
+      visual:height "22"^^xsd:int ;
+      visual:width "127"^^xsd:int ;
+      visual:x "888"^^xsd:int ;
+      visual:y "66"^^xsd:int ;
+    ] ;
+  visual:child [
+      a visual:Box ;
+      visual:depicts <http://www.w3.org/ns/dx/prof/ResourceDescriptor> ;
+      visual:height "22"^^xsd:int ;
+      visual:width "213"^^xsd:int ;
+      visual:x "732"^^xsd:int ;
+      visual:y "370"^^xsd:int ;
+    ] ;
+  visual:depicts <http://defs-dev.opengis.net/def/profiles/citisci/ppsr-costmod.ttl#ppsr-ala-qb> ;
+  rdfs:label "ppsr-costmod:ppsr-ala-qb Graph" ;
+].

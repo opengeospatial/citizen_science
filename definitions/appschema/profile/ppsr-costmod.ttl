@@ -1,0 +1,116 @@
+# baseURI: http://defs-dev.opengis.net/def/profiles/citisci/ppsr-costmod
+
+# imports: http://defs-dev.opengis.net/def/appschema/citsci/ppsr-costmod
+# imports: http://purl.org/dc/elements/1.1/
+# imports: http://purl.org/dc/terms/
+# imports: http://resources.opengeospatial.org/def/qbcomponents/qb4st
+# imports: http://www.opengis.net/def/qbcomponents/qb4st
+# imports: http://www.w3.org/2004/02/skos/core
+# imports: http://www.w3.org/ns/dx/prof
+# imports: http://www.w3.org/ns/dx/prof/role/
+# prefix: ppsr-costmod
+
+@prefix dct: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ppsr-costmod: <http://defs-dev.opengis.net/def/profiles/citisci/ppsr-costmod/> .
+@prefix ppsr-costmod1: <http://defs-dev.opengis.net/def/appschema/citsci/ppsr-costmod/> .
+@prefix prof: <http://www.w3.org/ns/dx/prof/> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix qb4s: <http://resources.opengeospatial.org/def/qbcomponents/qb4st> .
+@prefix qb4s1: <http://www.opengis.net/def/qbcomponents/qb4st> .
+@prefix qb4st: <http://www.w3.org/ns/qb4st/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix role: <http://www.w3.org/ns/dx/prof/role/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://defs-dev.opengis.net/def/appschema/citsci/ppsr-costmod>
+  a prof:Profile ;
+  rdfs:comment "This specification is modelled as both an Application Schema and a Specification (Profile). Content based on the proposed modifications from the EU COST action- chosen as a starting point because a RDF representation was available." ;
+  prof:hasProfile ppsr-costmod:ppsa-core-ala ;
+  prof:hasResource ppsr-costmod:GraphML ;
+  prof:hasResource ppsr-costmod:json-ld-context ;
+  prof:hasResource ppsr-costmod:json-schema ;
+  prof:hasResource ppsr-costmod:owl_generated ;
+  prof:hasToken "ppsr"^^xsd:token ;
+.
+ppsr-costmod1:hasAdministrativeUnitCode
+  rdfs:range <http://purl.org/dc/terms/ISO3166> ;
+.
+<http://defs-dev.opengis.net/def/profiles/citisci/ppsr-costmod.ttl>
+  a owl:Ontology ;
+  owl:imports <http://defs-dev.opengis.net/def/appschema/citsci/ppsr-costmod> ;
+  owl:imports dct: ;
+  owl:imports <http://purl.org/dc/terms/> ;
+  owl:imports <http://resources.opengeospatial.org/def/qbcomponents/qb4st> ;
+  owl:imports <http://www.opengis.net/def/qbcomponents/qb4st> ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:imports <http://www.w3.org/ns/dx/prof> ;
+  owl:imports role: ;
+  owl:versionInfo "Created with TopBraid Composer" ;
+.
+ppsr-costmod:CountryISO3166
+  a qb4st:RefArea ;
+  a qb4st:SpatialDimensionComponentSpecification ;
+  qb:codeList <http://defs-dev.opengis.net/def/reference/iso3166> ;
+  qb:dimension ppsr-costmod1:hasAdministrativeUnitCode ;
+  rdfs:comment "This is an example of a dimension (mandatory index) - one whcih can reference a vocabulary (skos concept Scheme)  - and in particular a geospatial concept that may be reused." ;
+  rdfs:label "Project Country" ;
+.
+ppsr-costmod:GraphML
+  a prof:ResourceDescriptor ;
+  dct:conformsTo <http://graphml.graphdrawing.org/specification.html> ;
+  rdfs:label "GraphML (edited source)" ;
+  prof:hasArtifact <http://defs-dev.opengis.net/def/appschema/citsci/ppsr-costmod?_format=graphml> ;
+  prof:hasRole role:fullConstraints ;
+.
+ppsr-costmod:json-ld-context
+  a prof:ResourceDescriptor ;
+  dct:conformsTo <https://www.w3.org/TR/json-ld/> ;
+  rdfs:label "OWL version derived" ;
+  prof:hasArtifact <http://defs-dev.opengis.net/def/appschema/citsci/ppsr-costmod?_format=jsonld> ;
+  prof:hasRole role:fullConstraints ;
+.
+ppsr-costmod:json-schema
+  a prof:ResourceDescriptor ;
+  dct:conformsTo <https://json-schema.org/draft/2019-08/schema#> ;
+  rdfs:label "OWL version derived" ;
+  prof:hasArtifact <http://defs-dev.opengis.net/def/appschema/citsci/ppsr-costmod?_format=json> ;
+  prof:hasRole role:fullConstraints ;
+.
+ppsr-costmod:owl_generated
+  a prof:ResourceDescriptor ;
+  dct:conformsTo <https://www.w3.org/TR/owl2-overview/> ;
+  rdfs:label "OWL version derived" ;
+  prof:hasArtifact <http://defs-dev.opengis.net/def/appschema/citsci/ppsr-costmod?_format=ttl> ;
+  prof:hasRole role:fullConstraints ;
+.
+ppsr-costmod:ppsa-core-ala
+  a skos:Concept ;
+  a prof:Profile ;
+  rdfs:comment "An example profile of PPSR using controlled vocabularies required by the Atlas of Living Australia" ;
+  rdfs:label "ALA Profile of PPSR-Core" ;
+  prof:hasResource ppsr-costmod:ppsr-ala-qb ;
+  prof:hasToken "ppsr-ala"^^xsd:token ;
+  prof:isProfileOf <http://defs-dev.opengis.net/def/appschema/citsci/ppsr-costmod> ;
+  prof:isTransitiveProfileOf <http://defs-dev.opengis.net/def/appschema/citsci/ppsr-costmod> ;
+.
+ppsr-costmod:ppsr-ala-qb
+  a prof:ResourceDescriptor ;
+  <http://purl.org/dc/terms/conformsTo> <http://purl.org/linked-data/cube> ;
+  <http://purl.org/dc/terms/conformsTo> <http://www.opengis.net/def/qbcomponents/qb4st> ;
+  rdfs:comment "The datacube specification allows designation of both dimension vs measure semantics of attributes and identification of controlled vocabularies allowed. The QB4ST provides an interoperable means of describing spatial dimensions of data." ;
+  rdfs:label "ALA Profile of PPSR-Core Datacube Specification" ;
+  prof:hasArtifact ppsr-costmod:ppsr-ala-qb-eg ;
+  prof:hasRole role:extensionConstraints ;
+.
+ppsr-costmod:ppsr-ala-qb-eg
+  a qb:DataStructureDefinition ;
+  qb:component ppsr-costmod:CountryISO3166 ;
+  rdfs:label "QB description of ALA profile of PPSR" ;
+.
+<http://defs-dev.opengis.net/def/reference/iso3166>
+  a skos:ConceptScheme ;
+  rdfs:label "ISO3166 country names" ;
+.
